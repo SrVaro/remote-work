@@ -1,0 +1,152 @@
+[gd_scene load_steps=16 format=3 uid="uid://bl77q5ofqfmhr"]
+
+[ext_resource type="Texture2D" uid="uid://ckmau2w38le30" path="res://Sprites/programmer_back-Sheet.png" id="1_j0tm6"]
+[ext_resource type="Texture2D" uid="uid://1bodfpv7h4dj" path="res://Sprites/programmer-Sheet.png" id="1_ph2f6"]
+[ext_resource type="Texture2D" uid="uid://cnav01pvdrw0e" path="res://Sprites/programmer_side-Sheet.png" id="2_6rcng"]
+
+[sub_resource type="GDScript" id="GDScript_cn7nw"]
+resource_name = "Player"
+script/source = "extends Actor
+
+
+var input_direction: get = _get_input_direction
+var sprite_direction = \"Down\": get = _get_sprite_direction
+
+@onready var sprite = $AnimatedSprite2D
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	velocity = input_direction * speed
+	set_animation(\"Walk\")
+	if velocity == Vector2.ZERO:
+		sprite.stop()
+	
+func set_animation(animation):
+	var direction = \"Side\" if sprite_direction in [\"Left\", \"Right\"] else sprite_direction
+	sprite.play(animation + direction)
+	sprite.flip_h = (sprite_direction == \"Left\")
+	
+func _get_input_direction():
+	return Vector2(Input.get_action_strength(\"move_right\") - Input.get_action_strength(\"move_left\"), Input.get_action_strength(\"move_back\") - Input.get_action_strength(\"move_forward\"))
+	
+func _get_sprite_direction():
+	match input_direction:
+		Vector2.LEFT:
+			sprite_direction = \"Left\"
+		Vector2.RIGHT:
+			sprite_direction = \"Right\"
+		Vector2.UP:
+			sprite_direction = \"Up\"
+		Vector2.DOWN:
+			sprite_direction = \"Down\"
+	return sprite_direction
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lokh2"]
+size = Vector2(13.3333, 5.66669)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kghs"]
+atlas = ExtResource("1_ph2f6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpdc4"]
+atlas = ExtResource("1_ph2f6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0gvg"]
+atlas = ExtResource("1_ph2f6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgcuc"]
+atlas = ExtResource("2_6rcng")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aw47n"]
+atlas = ExtResource("2_6rcng")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpa65"]
+atlas = ExtResource("2_6rcng")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjncp"]
+atlas = ExtResource("1_j0tm6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mual3"]
+atlas = ExtResource("1_j0tm6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pp6bx"]
+atlas = ExtResource("1_j0tm6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iq2rs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kghs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpdc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kghs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0gvg")
+}],
+"loop": true,
+"name": &"WalkDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgcuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aw47n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgcuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpa65")
+}],
+"loop": true,
+"name": &"WalkSide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjncp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mual3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjncp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pp6bx")
+}],
+"loop": true,
+"name": &"WalkUp",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+scale = Vector2(5, 5)
+collision_layer = 2
+script = SubResource("GDScript_cn7nw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.333333, 11.8333)
+shape = SubResource("RectangleShape2D_lokh2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_iq2rs")
+animation = &"WalkUp"
+autoplay = "WalkDown"
+frame_progress = 0.933177

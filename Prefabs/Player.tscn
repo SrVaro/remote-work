@@ -147,6 +147,5 @@ shape = SubResource("RectangleShape2D_lokh2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_iq2rs")
-animation = &"WalkUp"
+animation = &"WalkSide"
 autoplay = "WalkDown"
-frame_progress = 0.933177

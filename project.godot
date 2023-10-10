@@ -19,6 +19,10 @@ config/icon="res://Sprites/icon.svg"
 
 InteractionManager="*res://Prefabs/InteractionManager.tscn"
 
+[display]
+
+window/size/mode=3
+
 [input]
 
 move_forward={

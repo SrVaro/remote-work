@@ -21,7 +21,9 @@ InteractionManager="*res://Prefabs/InteractionManager.tscn"
 
 [display]
 
-window/size/mode=3
+window/size/mode=2
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [input]
 
@@ -78,9 +80,12 @@ interact={
 
 [layer_names]
 
+2d_render/layer_2="DrawShadows"
 2d_physics/layer_1="Player"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.380392, 0.678431, 1, 1)
+lights_and_shadows/positional_shadow/atlas_size=256

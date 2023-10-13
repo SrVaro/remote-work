@@ -14,7 +14,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	var time = Time.get_ticks_usec()
 	if (time % 450) == 0:
 		_add_notification_to_queue()

@@ -15,7 +15,7 @@ var sprite_direction = \"Down\": get = _get_sprite_direction
 @onready var sprite = $AnimatedSprite2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	velocity = input_direction * speed
 	set_animation(\"Walk\")
 	if velocity == Vector2.ZERO:

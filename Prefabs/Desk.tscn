@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://ftklnyk3h6ce"]
+[gd_scene load_steps=11 format=3 uid="uid://ftklnyk3h6ce"]
 
 [ext_resource type="Script" path="res://Scripts/Desk.gd" id="1_50865"]
 [ext_resource type="Texture2D" uid="uid://co4jxxxxdc53u" path="res://Sprites/desk.png" id="2_5hge1"]
 [ext_resource type="Texture2D" uid="uid://ce308skm8if8r" path="res://Sprites/minecraft0.png" id="3_4te32"]
+[ext_resource type="OccluderPolygon2D" uid="uid://dh6wguflg4uqu" path="res://Sprites/Desk.tres" id="3_gbyyk"]
 [ext_resource type="Script" path="res://Scripts/Interactions/InteractionArea.gd" id="4_f0uli"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rseg4"]
@@ -51,6 +52,11 @@ shape = SubResource("RectangleShape2D_rseg4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f2e16")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite2D"]
+position = Vector2(-0.199997, 1)
+rotation = -0.0120844
+occluder = ExtResource("3_gbyyk")
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 visible = false
 material = SubResource("CanvasItemMaterial_s66ln")
@@ -65,6 +71,7 @@ collision_mask = 2
 script = ExtResource("4_f0uli")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0.4, 0.4)
 shape = SubResource("CircleShape2D_ag6ag")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]

@@ -12,8 +12,4 @@ func _ready():
 	if !notification_manager.is_connected("remove_notification", ui._remove_last_notification):
 		notification_manager.connect("remove_notification", ui._remove_last_notification)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	
 

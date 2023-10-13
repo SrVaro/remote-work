@@ -20,7 +20,7 @@ func unregister_area(area: InteractionArea):
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if active_areas.size() > 0 && can_interact:
 		active_areas.sort_custom(_sort_by_distance_to_player)
 		label.global_position = active_areas[0].global_position

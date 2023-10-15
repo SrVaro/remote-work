@@ -43,7 +43,7 @@ func _get_sprite_direction():
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lokh2"]
-size = Vector2(13.3333, 5.66669)
+size = Vector2(6, 3.46664)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5kghs"]
 atlas = ExtResource("1_ph2f6")
@@ -141,7 +141,7 @@ collision_layer = 2
 script = SubResource("GDScript_cn7nw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.333333, 11.8333)
+position = Vector2(-1.90735e-07, 12.9333)
 shape = SubResource("RectangleShape2D_lokh2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

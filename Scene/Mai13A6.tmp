@@ -505,10 +505,11 @@ polygon = PackedVector2Array(-26, 34, -26, -32, -16, -36, 31, -36, 31, 30, 22.75
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ii54h"]
 polygon = PackedVector2Array(-28, 38.4, -27.6, 12.8, -6, -31, -1.40001, -30, 0.799988, -28, 1.79999, -26, 3, -23, 3, -14.8, 22.8, -14.8, 23, -6, 0, 38.6, -28, 38.6)
 
-[node name="Scene" type="Node2D" node_paths=PackedStringArray("notification_manager")]
+[node name="Scene" type="Node2D" node_paths=PackedStringArray("notification_manager", "ui")]
 position = Vector2(31, 48)
 script = ExtResource("1_2uloq")
 notification_manager = NodePath("NotificationManager")
+ui = NodePath("")
 
 [node name="Player" parent="." instance=ExtResource("1_v5m6x")]
 z_index = 2

@@ -18,6 +18,7 @@ config/icon="res://Sprites/icon.svg"
 [autoload]
 
 InteractionManager="*res://Prefabs/InteractionManager.tscn"
+UI="*res://Prefabs/UI.tscn"
 
 [display]
 

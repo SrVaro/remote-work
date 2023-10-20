@@ -1,0 +1,249 @@
+[gd_scene load_steps=18 format=3 uid="uid://otme5pyay7dk"]
+
+[ext_resource type="Script" path="res://Scripts/UI.gd" id="1_mwmaw"]
+[ext_resource type="Texture2D" uid="uid://qtgm4duprh3l" path="res://Sprites/UI/under_bar.png" id="2_g5v4w"]
+[ext_resource type="Texture2D" uid="uid://0e0pxmta2m3r" path="res://Sprites/UI/over_bar.png" id="3_3p8sl"]
+[ext_resource type="Texture2D" uid="uid://xm6f8dk7435t" path="res://Sprites/Furniture/clock.png" id="4_48ce2"]
+[ext_resource type="Texture2D" uid="uid://ce62ek6mgtoo0" path="res://Sprites/Furniture/animations/desktop-sheet.png" id="5_4whkh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lumme"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_xsr25"]
+font_size = 18
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rp85n"]
+atlas = ExtResource("5_4whkh")
+region = Rect2(0, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3rs3"]
+atlas = ExtResource("5_4whkh")
+region = Rect2(183, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dibxs"]
+atlas = ExtResource("5_4whkh")
+region = Rect2(366, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyvkx"]
+atlas = ExtResource("5_4whkh")
+region = Rect2(549, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v06mg"]
+atlas = ExtResource("5_4whkh")
+region = Rect2(732, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ofh0"]
+atlas = ExtResource("5_4whkh")
+region = Rect2(915, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmpay"]
+atlas = ExtResource("5_4whkh")
+region = Rect2(1098, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yotcf"]
+atlas = ExtResource("5_4whkh")
+region = Rect2(1281, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atanf"]
+atlas = ExtResource("5_4whkh")
+region = Rect2(1464, 0, 183, 118)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gtu5s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rp85n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3rs3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dibxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyvkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v06mg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ofh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmpay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yotcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atanf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_mwmaw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="HBoxClock" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="ClockRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer3/HBoxClock"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("4_48ce2")
+
+[node name="TimeOfDay" type="Label" parent="Control/MarginContainer/VBoxContainer3/HBoxClock"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "08:00
+"
+label_settings = SubResource("LabelSettings_lumme")
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(0, 20.305)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="JobStatus" type="TextureProgressBar" parent="Control/MarginContainer/VBoxContainer3/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+texture_under = ExtResource("2_g5v4w")
+texture_progress = ExtResource("3_3p8sl")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer3/VBoxContainer/JobStatus"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer3/VBoxContainer/JobStatus/MarginContainer"]
+layout_mode = 2
+text = "Job status"
+label_settings = SubResource("LabelSettings_xsr25")
+vertical_alignment = 1
+
+[node name="Health" type="TextureProgressBar" parent="Control/MarginContainer/VBoxContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+texture_under = ExtResource("2_g5v4w")
+texture_progress = ExtResource("3_3p8sl")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer3/VBoxContainer/Health"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer3/VBoxContainer/Health/MarginContainer"]
+layout_mode = 2
+text = "Health"
+label_settings = SubResource("LabelSettings_xsr25")
+vertical_alignment = 1
+
+[node name="Rest" type="TextureProgressBar" parent="Control/MarginContainer/VBoxContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+texture_under = ExtResource("2_g5v4w")
+texture_progress = ExtResource("3_3p8sl")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer3/VBoxContainer/Rest"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer3/VBoxContainer/Rest/MarginContainer"]
+layout_mode = 2
+text = "Rest
+"
+label_settings = SubResource("LabelSettings_xsr25")
+vertical_alignment = 1
+
+[node name="NotificationList" type="VBoxContainer" parent="Control/MarginContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="SleepTransition" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.227451, 0.266667, 0.4, 1)
+
+[node name="ComputerUIMargin" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Control/ComputerUIMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/ComputerUIMargin/Control"]
+visible = false
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_gtu5s")
+autoplay = "default"
+frame = 4
+frame_progress = 0.942434

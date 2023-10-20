@@ -1,5 +1,4 @@
 extends Node2D
-class_name NotificationManager
 
 signal add_notification(notification)
 signal remove_first_notification()
@@ -9,7 +8,7 @@ signal notification_timeout()
 
 var notificationList = []
 
-var notification_scene = preload("res://Prefabs/Notification.tscn")
+var notification_scene = preload("res://Prefabs/NotificationSystem/Notification.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

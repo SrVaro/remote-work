@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://qpapt6amjcee"]
+
+[ext_resource type="Texture2D" uid="uid://c17scm6vabylr" path="res://Sprites/UI/notification.png" id="1_uj37r"]
+[ext_resource type="Script" path="res://Scripts/Notification.gd" id="2_i8hox"]
+[ext_resource type="Texture2D" uid="uid://dtp8lyorb5jtn" path="res://Sprites/UI/notification_timeout.png" id="3_u6g1m"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dfnmc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jfi5r"]
+font_size = 48
+
+[node name="Notification" type="NinePatchRect"]
+material = SubResource("CanvasItemMaterial_dfnmc")
+custom_minimum_size = Vector2(300, 100)
+anchors_preset = -1
+anchor_left = 0.427083
+anchor_top = -0.0324074
+anchor_right = 0.572917
+anchor_bottom = 0.0324074
+offset_left = -59.0
+offset_top = 21.0
+offset_right = 73.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.999, 1)
+size_flags_horizontal = 0
+size_flags_vertical = 2
+texture = ExtResource("1_uj37r")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+script = ExtResource("2_i8hox")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="TimeoutProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = -0.000762939
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+nine_patch_stretch = true
+texture_progress = ExtResource("3_u6g1m")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.5
+offset_top = -16.0
+offset_right = 474.5
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.424785, 0.424785)
+text = "TIENES TRABAJO CABRON!"
+label_settings = SubResource("LabelSettings_jfi5r")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

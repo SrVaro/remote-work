@@ -3,7 +3,6 @@ class_name InteractionArea
 
 @export var action_name: String = "interact"
 
-
 func _on_body_entered(body):
 	InteractionManager.register_area(self)
 

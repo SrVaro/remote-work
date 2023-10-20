@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxynbkdveh5b5"]
+
+[ext_resource type="Script" path="res://Prefabs/Furniture/Bed.gd" id="1_ce2uv"]
+[ext_resource type="Texture2D" uid="uid://c540j1o1bohj5" path="res://Sprites/Furniture/bed.png" id="1_papsb"]
+[ext_resource type="Script" path="res://Scripts/Interactions/InteractionArea.gd" id="2_4br5o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldrmc"]
+size = Vector2(59.6, 22.6)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pe47j"]
+polygon = PackedVector2Array(22, 12, 30, -2, 30, -8, 28.8, -9, -11.6, -9, -17, -13, -20, -13, -29.4, -1.8, -31, 1, -31, 3, -30, 3.8, -30, 8.8, -27.8, 12, -25, 12, -25, 16, -24, 16, -23, 15, -23, 12, 17, 12, 17, 16, 18.2, 16, 19, 15, 19, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yooyb"]
+
+[node name="Bed" type="StaticBody2D" groups=["Lights"]]
+position = Vector2(160, 554)
+scale = Vector2(5, 5)
+script = ExtResource("1_ce2uv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.199997, 2.3)
+shape = SubResource("RectangleShape2D_ldrmc")
+
+[node name="Bed" type="Sprite2D" parent="."]
+texture = ExtResource("1_papsb")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_pe47j")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+position = Vector2(5.8, -12)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_4br5o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(2.8, 4.4)
+scale = Vector2(1.99633, 0.897735)
+shape = SubResource("CircleShape2D_yooyb")
+
+[connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]

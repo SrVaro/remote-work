@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://l87gkrv43ijx"]
+
+[ext_resource type="Texture2D" uid="uid://lrvuf26hw1cn" path="res://Sprites/Furniture/counter-top.png" id="1_to82c"]
+[ext_resource type="Texture2D" uid="uid://bdvbek3og8q2h" path="res://Sprites/Furniture/counter-top2.png" id="2_4jrrs"]
+
+[node name="CounterTop" type="StaticBody2D"]
+z_index = 1
+position = Vector2(625, 212)
+scale = Vector2(5, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_to82c")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-35, 40)
+rotation = 4.13843e-05
+texture = ExtResource("2_4jrrs")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-28.8, -12, -64, 58, -64, 75, -38, 75, -12.2, 23, 26.8, 23.2, 35, 6.8, 35, -12)

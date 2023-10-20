@@ -3,9 +3,7 @@ extends Node2D
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var label = $Label
 
-const base_text = "PUSH ANY BOTTON TO INTERACT!"
-
-@export var key_to_interact = "interact"
+const base_text = "Pulsa [E] para "
 
 var active_areas = []
 var can_interact = true
@@ -23,6 +21,11 @@ func unregister_area(area: InteractionArea):
 func _process(_delta):
 	if active_areas.size() > 0 && can_interact:
 		active_areas.sort_custom(_sort_by_distance_to_player)
+		if active_areas[0].action_name == "any_button":
+			label.text = "¡Pulsa cualquier boton del teclado!"
+		else:
+			label.text = base_text + "interectuar"
+			
 		label.global_position = active_areas[0].global_position
 		label.global_position.y -= 36
 		label.global_position.x -= label.size.x / 2
@@ -37,7 +40,7 @@ func _sort_by_distance_to_player(area1, area2):
 	return area1_to_player < area2_to_player
 	
 func _input(event):
-	if event.is_action_pressed(key_to_interact) && can_interact:
+	if active_areas.size() > 0 && event.is_action_pressed(active_areas[0].action_name) && can_interact:
 		if active_areas.size() > 0:
 			can_interact = false
 			label.hide()

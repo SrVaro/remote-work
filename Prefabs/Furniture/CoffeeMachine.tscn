@@ -1,0 +1,108 @@
+[gd_scene load_steps=13 format=3 uid="uid://bgxim7ppp0upb"]
+
+[ext_resource type="Script" path="res://Scripts/Interactions/InteractuablesItems/CoffeMachine.gd" id="1_p45jc"]
+[ext_resource type="Script" path="res://Scripts/Interactions/InteractionArea.gd" id="2_2xvem"]
+[ext_resource type="Texture2D" uid="uid://buhvj05f8wktu" path="res://Sprites/Furniture/coffee_machine.png" id="3_2kmnd"]
+[ext_resource type="Texture2D" uid="uid://d1jvxyyeii4le" path="res://Sprites/Furniture/animations/coffe_machine_working.png" id="4_4840v"]
+[ext_resource type="Texture2D" uid="uid://rvk5ok2o0wu1" path="res://Sprites/Furniture/coffee.png" id="5_5al4f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_trjd2"]
+radius = 8.60232
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1yqx"]
+atlas = ExtResource("4_4840v")
+region = Rect2(0, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hynbe"]
+atlas = ExtResource("4_4840v")
+region = Rect2(16, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk64v"]
+atlas = ExtResource("4_4840v")
+region = Rect2(32, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12h4x"]
+atlas = ExtResource("4_4840v")
+region = Rect2(48, 0, 16, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ip1bo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2kmnd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1yqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hynbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uk64v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12h4x")
+}],
+"loop": true,
+"name": &"working",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wqh68"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_5al4f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CoffeeMachine" type="Node2D"]
+position = Vector2(-30.2, 16)
+script = ExtResource("1_p45jc")
+restPerCoffee = 20.0
+
+[node name="CoffeeTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="CoffeeMachineInteractionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_2xvem")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoffeeMachineInteractionArea"]
+position = Vector2(13.2, 12.8)
+shape = SubResource("CircleShape2D_trjd2")
+
+[node name="CoffeeMachine" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.20001, -11)
+sprite_frames = SubResource("SpriteFrames_ip1bo")
+autoplay = "default"
+frame_progress = 0.301656
+
+[node name="Coffee" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.799988, 1)
+sprite_frames = SubResource("SpriteFrames_wqh68")
+
+[node name="Coffees" type="Node2D" parent="."]
+
+[node name="CoffeeSpawn1" type="Node2D" parent="Coffees"]
+position = Vector2(-4.8, 14)
+
+[node name="CoffeeSpawn2" type="Node2D" parent="Coffees"]
+position = Vector2(-8, 21.4)
+
+[node name="CoffeeSpawn3" type="Node2D" parent="Coffees"]
+position = Vector2(-11.6, 29.4)
+
+[connection signal="timeout" from="CoffeeTimer" to="." method="_on_coffee_timer_timeout"]
+[connection signal="body_entered" from="CoffeeMachineInteractionArea" to="CoffeeMachineInteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="CoffeeMachineInteractionArea" to="CoffeeMachineInteractionArea" method="_on_body_exited"]

@@ -11,7 +11,3 @@
 visible = false
 z_index = 1
 position = Vector2(226, 455)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(160, 533)
-zoom = Vector2(5, 5)

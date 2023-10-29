@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://otme5pyay7dk"]
+[gd_scene load_steps=37 format=3 uid="uid://otme5pyay7dk"]
 
 [ext_resource type="Script" path="res://Scripts/UI.gd" id="1_mwmaw"]
 [ext_resource type="Texture2D" uid="uid://qtgm4duprh3l" path="res://Sprites/UI/under_bar.png" id="2_g5v4w"]
@@ -107,6 +107,28 @@ bg_color = Color(0.239216, 0.662745, 0.878431, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m0qt8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3vvx4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hixpu"]
+bg_color = Color(0, 0.584314, 0.913725, 0.478431)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8e5y4"]
+line_spacing = -22.0
+font = ExtResource("8_0rcep")
+font_size = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tgu1c"]
+bg_color = Color(0.0705882, 0.305882, 0.537255, 0.478431)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fapdi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rqv0h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i10yx"]
+bg_color = Color(0.0705882, 0.305882, 0.537255, 0.478431)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6x2dd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oualq"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_mwmaw")
@@ -416,9 +438,72 @@ theme_override_fonts/font = ExtResource("8_0rcep")
 theme_override_font_sizes/font_size = 70
 text = "Salir"
 
+[node name="MainMenu" type="Camera2D" parent="."]
+process_mode = 3
+position = Vector2(160, 533)
+zoom = Vector2(5, 5)
+
+[node name="Panel" type="Panel" parent="MainMenu"]
+offset_left = -40.0
+offset_top = -501.0
+offset_bottom = -461.0
+scale = Vector2(11.6399, 7.2138)
+theme_override_styles/panel = SubResource("StyleBoxFlat_hixpu")
+
+[node name="GameTitle" type="Label" parent="MainMenu/Panel"]
+offset_left = -5.735
+offset_top = -8.67539
+offset_right = 141.265
+offset_bottom = 93.3246
+scale = Vector2(0.360228, 0.532759)
+text = "REMOTE
+WORK"
+label_settings = SubResource("LabelSettings_8e5y4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="MainMenu"]
+offset_left = 502.0
+offset_top = -501.0
+offset_right = 542.0
+offset_bottom = -461.0
+scale = Vector2(9.5358, 3.32927)
+theme_override_styles/panel = SubResource("StyleBoxFlat_tgu1c")
+
+[node name="NewGame" type="Button" parent="MainMenu/Panel2"]
+offset_left = -0.44577
+offset_right = 58.5542
+offset_bottom = 21.0
+scale = Vector2(0.693888, 1.81994)
+theme_override_fonts/font = ExtResource("8_0rcep")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fapdi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rqv0h")
+text = "Nueva partida"
+flat = true
+
+[node name="Panel3" type="Panel" parent="MainMenu"]
+offset_left = 502.0
+offset_top = -351.0
+offset_right = 542.0
+offset_bottom = -311.0
+scale = Vector2(9.51237, 3.32109)
+theme_override_styles/panel = SubResource("StyleBoxFlat_i10yx")
+
+[node name="ExitGame" type="Button" parent="MainMenu/Panel3"]
+offset_right = 59.0
+offset_bottom = 21.0
+scale = Vector2(0.675192, 1.88782)
+theme_override_constants/h_separation = 0
+theme_override_fonts/font = ExtResource("8_0rcep")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6x2dd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oualq")
+text = "Salir"
+flat = true
+
 [connection signal="close_requested" from="Control/Window" to="." method="_on_window_close_requested"]
 [connection signal="animation_finished" from="Control/Window/ComputerDesk" to="." method="_on_computer_desk_animation_finished"]
 [connection signal="pressed" from="Control/Window/ComputerDesk/Icons/WorkExe" to="." method="_on_work_exe_pressed"]
 [connection signal="text_changed" from="Control/Window/ComputerDesk/WorkExeScreen/TextEdit" to="." method="_on_text_edit_text_changed"]
 [connection signal="pressed" from="Control/PauseMargin/PauseMenu/PauseMenuContents/MarginContinueButton/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Control/PauseMargin/PauseMenu/PauseMenuContents/MarginExitButton/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MainMenu/Panel3/ExitGame" to="." method="_on_exit_button_pressed"]

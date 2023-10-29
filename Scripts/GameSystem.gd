@@ -17,7 +17,7 @@ var random = RandomNumberGenerator.new()
 func _ready():
 	#UI._sleep_transition(["fade_out"])
 	get_tree().paused = true
-	UI.hide()
+	UI.get_node("Control").hide()
 	Events.tick.connect(_on_tick)
 	if !NotificationManager.is_connected("notification_timeout", _notification_timeout):
 		NotificationManager.connect("notification_timeout", _notification_timeout)

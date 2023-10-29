@@ -1,36 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://qpapt6amjcee"]
+[gd_scene load_steps=7 format=3 uid="uid://qpapt6amjcee"]
 
 [ext_resource type="Texture2D" uid="uid://c17scm6vabylr" path="res://Sprites/UI/notification.png" id="1_uj37r"]
 [ext_resource type="Script" path="res://Scripts/Notification.gd" id="2_i8hox"]
 [ext_resource type="Texture2D" uid="uid://dtp8lyorb5jtn" path="res://Sprites/UI/notification_timeout.png" id="3_u6g1m"]
+[ext_resource type="FontFile" uid="uid://c5bl2x3fm6684" path="res://m3x6.ttf" id="4_0wmwp"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dfnmc"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_jfi5r"]
+[sub_resource type="LabelSettings" id="LabelSettings_530xb"]
 font_size = 48
 
-[node name="Notification" type="NinePatchRect"]
+[node name="Notification" type="TextureRect"]
 material = SubResource("CanvasItemMaterial_dfnmc")
-custom_minimum_size = Vector2(300, 100)
-anchors_preset = -1
-anchor_left = 0.427083
-anchor_top = -0.0324074
-anchor_right = 0.572917
-anchor_bottom = 0.0324074
-offset_left = -59.0
-offset_top = 21.0
-offset_right = 73.0
-offset_bottom = 54.0
+layout_direction = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.999, 1)
-size_flags_horizontal = 0
-size_flags_vertical = 2
+scale = Vector2(0.999328, 1)
 texture = ExtResource("1_uj37r")
-patch_margin_left = 1
-patch_margin_top = 1
-patch_margin_right = 1
-patch_margin_bottom = 1
 script = ExtResource("2_i8hox")
 
 [node name="Timer" type="Timer" parent="."]
@@ -59,14 +48,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -129.5
-offset_top = -16.0
-offset_right = 474.5
-offset_bottom = 62.0
+offset_left = -39.28
+offset_top = -6.505
+offset_right = 224.72
+offset_bottom = 34.495
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.424785, 0.424785)
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("4_0wmwp")
 text = "TIENES TRABAJO CABRON!"
-label_settings = SubResource("LabelSettings_jfi5r")
+label_settings = SubResource("LabelSettings_530xb")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

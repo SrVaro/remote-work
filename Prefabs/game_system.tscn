@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://dch3kutm1jki0"]
+[gd_scene load_steps=4 format=3 uid="uid://dch3kutm1jki0"]
 
 [ext_resource type="Script" path="res://Scripts/GameSystem.gd" id="1_mq671"]
+[ext_resource type="Script" path="res://Scene/TickSystem.gd" id="2_eyb8o"]
+[ext_resource type="Script" path="res://Scene/TimeController.gd" id="3_n2lw3"]
 
 [node name="GameController" type="Node2D"]
 script = ExtResource("1_mq671")
+
+[node name="TickSystem" type="Node2D" parent="."]
+script = ExtResource("2_eyb8o")
+
+[node name="TickTimer" type="Timer" parent="TickSystem"]
+wait_time = 0.25
+autostart = true
+
+[node name="TimeController" type="Node2D" parent="."]
+script = ExtResource("3_n2lw3")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="TimeController"]
+
+[connection signal="timeout" from="TickSystem/TickTimer" to="TickSystem" method="_on_tick_timer_timeout"]

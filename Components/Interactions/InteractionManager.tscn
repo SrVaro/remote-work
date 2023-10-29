@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ne8b4a07m13h"]
+[gd_scene load_steps=4 format=3 uid="uid://ne8b4a07m13h"]
 
 [ext_resource type="Script" path="res://Scripts/Interactions/InteractionManager.gd" id="1_0csrb"]
+[ext_resource type="FontFile" uid="uid://c5bl2x3fm6684" path="res://m3x6.ttf" id="2_kqdsf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_simq3"]
+font = ExtResource("2_kqdsf")
+font_size = 48
 
 [node name="InteractionManager" type="Node2D"]
 z_index = 20
@@ -15,5 +20,6 @@ offset_right = 62.5
 offset_bottom = 26.0
 grow_horizontal = 2
 text = "PUSH ANY BOTTON TO INTERACT"
+label_settings = SubResource("LabelSettings_simq3")
 horizontal_alignment = 1
 vertical_alignment = 1

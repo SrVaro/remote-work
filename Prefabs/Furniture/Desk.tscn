@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ftklnyk3h6ce"]
+[gd_scene load_steps=25 format=3 uid="uid://ftklnyk3h6ce"]
 
 [ext_resource type="Texture2D" uid="uid://co4jxxxxdc53u" path="res://Sprites/Furniture/desk.png" id="1_654qs"]
 [ext_resource type="OccluderPolygon2D" uid="uid://dh6wguflg4uqu" path="res://Sprites/Furniture/Desk.tres" id="2_s4d1d"]
@@ -8,11 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://byroulmhnbvgs" path="res://Sprites/Furniture/animations/computer_working.png" id="5_sry4v"]
 [ext_resource type="Texture2D" uid="uid://cxyi2fcyn1ell" path="res://Sprites/Furniture/computer.png" id="6_6qw58"]
 [ext_resource type="Texture2D" uid="uid://cwdpjsr5gwpcs" path="res://Sprites/Furniture/lamp.png" id="8_1cykt"]
+[ext_resource type="Texture2D" uid="uid://0df2a03xwons" path="res://Sprites/UI/notification_alert.png" id="8_1t7to"]
 [ext_resource type="Script" path="res://Prefabs/Furniture/DeskLamp.gd" id="8_iobai"]
 [ext_resource type="Texture2D" uid="uid://32nfd07ux7ea" path="res://Sprites/Furniture/lamp_light.png" id="9_hs4hh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rseg4"]
-size = Vector2(31.2, 25.8)
+size = Vector2(44, 25.8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f2e16"]
 animations = [{
@@ -90,6 +91,17 @@ orbit_velocity_max = 0.0
 scale_min = 0.5
 anim_offset_max = 1.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_5eosx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_1t7to")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ta3jq"]
 animations = [{
 "frames": [{
@@ -116,7 +128,7 @@ animations = [{
 scale = Vector2(5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.599997, 1.9)
+position = Vector2(0.600001, 1.9)
 shape = SubResource("RectangleShape2D_rseg4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -141,7 +153,6 @@ position = Vector2(-7.2, 10.2)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_f0uli")
-action_name = "any_button"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Computer/InteractionArea"]
 position = Vector2(0.4, 0.4)
@@ -155,19 +166,17 @@ amount = 10
 process_material = SubResource("ParticleProcessMaterial_qax3q")
 texture = ExtResource("3_4te32")
 
-[node name="ProgressBar" type="ProgressBar" parent="Computer"]
-offset_left = -7.2
-offset_top = -29.2
-offset_right = -3.2
-offset_bottom = -2.2
-scale = Vector2(0.662281, 0.662281)
+[node name="NotificationAlert" type="AnimatedSprite2D" parent="Computer"]
+visible = false
+position = Vector2(13.2, -12.6)
+sprite_frames = SubResource("SpriteFrames_5eosx")
 
 [node name="DeskLamp" type="Node2D" parent="." groups=["Lights"]]
-position = Vector2(2.4, 2)
+position = Vector2(-2.4, 3.6)
 script = ExtResource("8_iobai")
 
 [node name="Lamp" type="AnimatedSprite2D" parent="DeskLamp"]
-position = Vector2(-2.4, -11)
+position = Vector2(5.8, -11.2)
 sprite_frames = SubResource("SpriteFrames_ta3jq")
 
 [node name="NightLight" type="AnimatedSprite2D" parent="DeskLamp"]

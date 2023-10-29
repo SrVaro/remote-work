@@ -16,6 +16,7 @@ func _ready():
 
 
 func _add_notification_to_queue():
+	print("HOLA")
 	var notification_instance = notification_scene.instantiate()
 	notification_instance.connect("notification_timeout_expired", _notification_timeout_expired)
 	notificationList.append(notification_instance)

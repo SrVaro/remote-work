@@ -1,11 +1,70 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxynbkdveh5b5"]
+[gd_scene load_steps=15 format=3 uid="uid://bxynbkdveh5b5"]
 
 [ext_resource type="Script" path="res://Prefabs/Furniture/Bed.gd" id="1_ce2uv"]
 [ext_resource type="Texture2D" uid="uid://c540j1o1bohj5" path="res://Sprites/Furniture/bed.png" id="1_papsb"]
 [ext_resource type="Script" path="res://Scripts/Interactions/InteractionArea.gd" id="2_4br5o"]
+[ext_resource type="Texture2D" uid="uid://bikfnx1l6rhfq" path="res://Sprites/Furniture/animations/bed_player_spritesheet.png" id="3_wvyfr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldrmc"]
 size = Vector2(59.6, 22.6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nh5dt"]
+atlas = ExtResource("3_wvyfr")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqifh"]
+atlas = ExtResource("3_wvyfr")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl7oq"]
+atlas = ExtResource("3_wvyfr")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhgis"]
+atlas = ExtResource("3_wvyfr")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wdfr"]
+atlas = ExtResource("3_wvyfr")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvsav"]
+atlas = ExtResource("3_wvyfr")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_itasa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_papsb")
+}],
+"loop": false,
+"name": &"bed_empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nh5dt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqifh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pl7oq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhgis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wdfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvsav")
+}],
+"loop": true,
+"name": &"bed_player",
+"speed": 5.0
+}]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pe47j"]
 polygon = PackedVector2Array(22, 12, 30, -2, 30, -8, 28.8, -9, -11.6, -9, -17, -13, -20, -13, -29.4, -1.8, -31, 1, -31, 3, -30, 3.8, -30, 8.8, -27.8, 12, -25, 12, -25, 16, -24, 16, -23, 15, -23, 12, 17, 12, 17, 16, 18.2, 16, 19, 15, 19, 12)
@@ -21,8 +80,11 @@ script = ExtResource("1_ce2uv")
 position = Vector2(0.199997, 2.3)
 shape = SubResource("RectangleShape2D_ldrmc")
 
-[node name="Bed" type="Sprite2D" parent="."]
-texture = ExtResource("1_papsb")
+[node name="Bed" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_itasa")
+animation = &"bed_player"
+autoplay = "bed_player"
+frame_progress = 0.698435
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_pe47j")

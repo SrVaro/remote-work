@@ -5,7 +5,7 @@ extends Node2D
 var minutes: int = 0
 var hours: int = 8
 
-const days_of_week_enum = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"]
+const days_of_week_enum = ["Lunes", "Martes", "Mierx", "Jueves", "Viernes", "Sabado", "Domingo"]
 var day_of_week = 0
 
 var night_mode: bool = false
@@ -48,9 +48,12 @@ func day_passed():
 	Events.day_passed.emit(days_of_week_enum[day_of_week])
 	
 func reset_day():
+	night_mode = false
+	get_tree().call_group("Lights","toggle_lights")
 	lightning_level = 255
 	minutes = 0
 	hours = 8
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

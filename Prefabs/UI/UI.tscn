@@ -1,87 +1,112 @@
-[gd_scene load_steps=18 format=3 uid="uid://otme5pyay7dk"]
+[gd_scene load_steps=29 format=3 uid="uid://otme5pyay7dk"]
 
 [ext_resource type="Script" path="res://Scripts/UI.gd" id="1_mwmaw"]
 [ext_resource type="Texture2D" uid="uid://qtgm4duprh3l" path="res://Sprites/UI/under_bar.png" id="2_g5v4w"]
 [ext_resource type="Texture2D" uid="uid://0e0pxmta2m3r" path="res://Sprites/UI/over_bar.png" id="3_3p8sl"]
 [ext_resource type="Texture2D" uid="uid://xm6f8dk7435t" path="res://Sprites/Furniture/clock.png" id="4_48ce2"]
 [ext_resource type="Texture2D" uid="uid://ce62ek6mgtoo0" path="res://Sprites/Furniture/animations/desktop-sheet.png" id="5_4whkh"]
+[ext_resource type="Texture2D" uid="uid://lyrwdedm6pei" path="res://Sprites/Furniture/work_icon.png" id="6_8lxej"]
+[ext_resource type="Texture2D" uid="uid://6vem2u3jqolt" path="res://Sprites/Furniture/work_exe_screen.png" id="7_gaun1"]
+[ext_resource type="FontFile" uid="uid://c5bl2x3fm6684" path="res://m3x6.ttf" id="8_0rcep"]
+[ext_resource type="Texture2D" uid="uid://cuhoix2x7c6er" path="res://Sprites/UI/progress_bar.png" id="9_5rjek"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lumme"]
-font_size = 28
+font = ExtResource("8_0rcep")
+font_size = 112
 
 [sub_resource type="LabelSettings" id="LabelSettings_xsr25"]
 font_size = 18
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rp85n"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob8ki"]
 atlas = ExtResource("5_4whkh")
 region = Rect2(0, 0, 183, 118)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f3rs3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0fe6"]
 atlas = ExtResource("5_4whkh")
 region = Rect2(183, 0, 183, 118)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dibxs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2ka0"]
 atlas = ExtResource("5_4whkh")
 region = Rect2(366, 0, 183, 118)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eyvkx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwkqe"]
 atlas = ExtResource("5_4whkh")
 region = Rect2(549, 0, 183, 118)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v06mg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmqpe"]
 atlas = ExtResource("5_4whkh")
 region = Rect2(732, 0, 183, 118)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ofh0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mq83t"]
 atlas = ExtResource("5_4whkh")
 region = Rect2(915, 0, 183, 118)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jmpay"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5me7w"]
 atlas = ExtResource("5_4whkh")
 region = Rect2(1098, 0, 183, 118)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yotcf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q27dk"]
 atlas = ExtResource("5_4whkh")
 region = Rect2(1281, 0, 183, 118)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_atanf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhn1h"]
 atlas = ExtResource("5_4whkh")
 region = Rect2(1464, 0, 183, 118)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_gtu5s"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_hl7k2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rp85n")
+"texture": SubResource("AtlasTexture_ob8ki")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f3rs3")
+"texture": SubResource("AtlasTexture_i0fe6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dibxs")
+"texture": SubResource("AtlasTexture_r2ka0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eyvkx")
+"texture": SubResource("AtlasTexture_iwkqe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v06mg")
+"texture": SubResource("AtlasTexture_dmqpe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0ofh0")
+"texture": SubResource("AtlasTexture_mq83t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jmpay")
+"texture": SubResource("AtlasTexture_5me7w")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yotcf")
+"texture": SubResource("AtlasTexture_q27dk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_atanf")
+"texture": SubResource("AtlasTexture_hhn1h")
 }],
 "loop": false,
 "name": &"default",
-"speed": 2.0
+"speed": 5.0
 }]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22a7o"]
+content_margin_left = 3.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1yr5x"]
+content_margin_left = 3.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkohl"]
+content_margin_left = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rnva6"]
+bg_color = Color(0.239216, 0.662745, 0.878431, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8vitq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m0qt8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3vvx4"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_mwmaw")
@@ -124,23 +149,23 @@ texture = ExtResource("4_48ce2")
 
 [node name="TimeOfDay" type="Label" parent="Control/MarginContainer/VBoxContainer3/HBoxClock"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_vertical = 1
 text = "08:00
 "
 label_settings = SubResource("LabelSettings_lumme")
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer3"]
-custom_minimum_size = Vector2(0, 20.305)
+[node name="VBoxContainer4" type="VBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer4"]
+layout_mode = 2
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer3"]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="JobStatus" type="TextureProgressBar" parent="Control/MarginContainer/VBoxContainer3/VBoxContainer"]
+[node name="JobStatus" type="TextureProgressBar" parent="Control/MarginContainer/VBoxContainer4/VBoxContainer"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -149,7 +174,7 @@ value = 100.0
 texture_under = ExtResource("2_g5v4w")
 texture_progress = ExtResource("3_3p8sl")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer3/VBoxContainer/JobStatus"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer4/VBoxContainer/JobStatus"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -158,13 +183,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
 
-[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer3/VBoxContainer/JobStatus/MarginContainer"]
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer4/VBoxContainer/JobStatus/MarginContainer"]
 layout_mode = 2
 text = "Job status"
 label_settings = SubResource("LabelSettings_xsr25")
 vertical_alignment = 1
 
-[node name="Health" type="TextureProgressBar" parent="Control/MarginContainer/VBoxContainer3/VBoxContainer"]
+[node name="Health" type="TextureProgressBar" parent="Control/MarginContainer/VBoxContainer4/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -172,7 +197,7 @@ value = 100.0
 texture_under = ExtResource("2_g5v4w")
 texture_progress = ExtResource("3_3p8sl")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer3/VBoxContainer/Health"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer4/VBoxContainer/Health"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -181,13 +206,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
 
-[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer3/VBoxContainer/Health/MarginContainer"]
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer4/VBoxContainer/Health/MarginContainer"]
 layout_mode = 2
 text = "Health"
 label_settings = SubResource("LabelSettings_xsr25")
 vertical_alignment = 1
 
-[node name="Rest" type="TextureProgressBar" parent="Control/MarginContainer/VBoxContainer3/VBoxContainer"]
+[node name="Rest" type="TextureProgressBar" parent="Control/MarginContainer/VBoxContainer4/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -195,7 +220,7 @@ value = 100.0
 texture_under = ExtResource("2_g5v4w")
 texture_progress = ExtResource("3_3p8sl")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer3/VBoxContainer/Rest"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer4/VBoxContainer/Rest"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -204,19 +229,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
 
-[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer3/VBoxContainer/Rest/MarginContainer"]
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer4/VBoxContainer/Rest/MarginContainer"]
 layout_mode = 2
 text = "Rest
 "
 label_settings = SubResource("LabelSettings_xsr25")
 vertical_alignment = 1
-
-[node name="NotificationList" type="VBoxContainer" parent="Control/MarginContainer"]
-clip_contents = true
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
 
 [node name="SleepTransition" type="ColorRect" parent="Control"]
 layout_mode = 1
@@ -225,9 +243,120 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.227451, 0.266667, 0.4, 1)
+color = Color(0.227451, 0.266667, 0.4, 0)
 
-[node name="ComputerUIMargin" type="MarginContainer" parent="Control"]
+[node name="DayOfTheWeekLabel" type="Label" parent="Control/SleepTransition"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_0rcep")
+theme_override_font_sizes/font_size = 125
+text = "lunes"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Window" type="Window" parent="Control"]
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+canvas_item_default_texture_filter = 0
+initial_position = 1
+size = Vector2i(915, 590)
+visible = false
+
+[node name="ComputerDesk" type="AnimatedSprite2D" parent="Control/Window"]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_hl7k2")
+autoplay = "default"
+frame = 8
+frame_progress = 0.171355
+centered = false
+
+[node name="Icons" type="HBoxContainer" parent="Control/Window/ComputerDesk"]
+visible = false
+offset_left = 7.03
+offset_top = 11.76
+offset_right = 207.03
+offset_bottom = 211.76
+metadata/_edit_use_anchors_ = true
+
+[node name="WorkExe" type="Button" parent="Control/Window/ComputerDesk/Icons"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_22a7o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1yr5x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dkohl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rnva6")
+icon = ExtResource("6_8lxej")
+flat = true
+
+[node name="WorkExeScreen" type="TextureRect" parent="Control/Window/ComputerDesk"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_gaun1")
+
+[node name="TextEdit" type="TextEdit" parent="Control/Window/ComputerDesk/WorkExeScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 157.02
+offset_bottom = 61.815
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(16.425, 24.25)
+theme_override_colors/font_color = Color(0.388235, 0.780392, 0.301961, 1)
+theme_override_fonts/font = ExtResource("8_0rcep")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8vitq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m0qt8")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_3vvx4")
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+caret_blink = true
+
+[node name="NotificationList" type="VBoxContainer" parent="Control/Window/ComputerDesk/WorkExeScreen"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -54.45
+offset_top = 14.335
+offset_right = 41.5503
+offset_bottom = 78.335
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 8
+theme_override_constants/separation = 0
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Control/Window/ComputerDesk/WorkExeScreen"]
+layout_mode = 1
+offset_left = 4.815
+offset_top = 92.97
+offset_right = 506.89
+offset_bottom = 217.81
+scale = Vector2(0.345, 0.07)
+nine_patch_stretch = true
+texture_under = ExtResource("9_5rjek")
+texture_progress = ExtResource("3_3p8sl")
+
+[node name="PauseMargin" type="MarginContainer" parent="Control"]
+process_mode = 2
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -235,15 +364,61 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="Control/ComputerUIMargin"]
+[node name="PauseMenu" type="ColorRect" parent="Control/PauseMargin"]
 layout_mode = 2
+color = Color(0.227451, 0.266667, 0.4, 1)
+
+[node name="PauseMenuContents" type="VBoxContainer" parent="Control/PauseMargin/PauseMenu"]
+layout_mode = 2
+offset_left = 441.0
+offset_top = 202.0
+offset_right = 710.0
+offset_bottom = 445.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/ComputerUIMargin/Control"]
-visible = false
-scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_gtu5s")
-autoplay = "default"
-frame = 4
-frame_progress = 0.942434
+[node name="MarginContainer" type="MarginContainer" parent="Control/PauseMargin/PauseMenu/PauseMenuContents"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 18
+
+[node name="PauseMenuTitle" type="Label" parent="Control/PauseMargin/PauseMenu/PauseMenuContents/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_0rcep")
+theme_override_font_sizes/font_size = 100
+text = "Pause Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="MarginContinueButton" type="MarginContainer" parent="Control/PauseMargin/PauseMenu/PauseMenuContents"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ContinueButton" type="Button" parent="Control/PauseMargin/PauseMenu/PauseMenuContents/MarginContinueButton"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_0rcep")
+theme_override_font_sizes/font_size = 70
+text = "Continuar"
+
+[node name="MarginExitButton" type="MarginContainer" parent="Control/PauseMargin/PauseMenu/PauseMenuContents"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ExitButton" type="Button" parent="Control/PauseMargin/PauseMenu/PauseMenuContents/MarginExitButton"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_0rcep")
+theme_override_font_sizes/font_size = 70
+text = "Salir"
+
+[connection signal="close_requested" from="Control/Window" to="." method="_on_window_close_requested"]
+[connection signal="animation_finished" from="Control/Window/ComputerDesk" to="." method="_on_computer_desk_animation_finished"]
+[connection signal="pressed" from="Control/Window/ComputerDesk/Icons/WorkExe" to="." method="_on_work_exe_pressed"]
+[connection signal="text_changed" from="Control/Window/ComputerDesk/WorkExeScreen/TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="Control/PauseMargin/PauseMenu/PauseMenuContents/MarginContinueButton/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Control/PauseMargin/PauseMenu/PauseMenuContents/MarginExitButton/ExitButton" to="." method="_on_exit_button_pressed"]

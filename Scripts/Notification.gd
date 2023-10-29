@@ -1,4 +1,4 @@
-extends NinePatchRect
+extends TextureRect
 
 @onready var timer = $Timer
 @onready var timeout_progress_bar = $TimeoutProgressBar

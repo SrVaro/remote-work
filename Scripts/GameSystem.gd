@@ -1,7 +1,8 @@
 extends Node2D
 
+@onready var time_controller = $TimeController
+@onready var player = get_node("/root/MainScene/Player")
 
-@onready var time_controller = get_node("/root/MainScene/TimeController")
 
 var job_status: int = 100
 var rest_status: int = 100
@@ -9,13 +10,14 @@ var health_status: int = 100
 
 var computer_on: bool = false
 
+
 var random = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	UI._sleep_transition(["fade_out"])
-	
+	#UI._sleep_transition(["fade_out"])
+	get_tree().paused = true
+	UI.hide()
 	Events.tick.connect(_on_tick)
 	if !NotificationManager.is_connected("notification_timeout", _notification_timeout):
 		NotificationManager.connect("notification_timeout", _notification_timeout)
@@ -23,11 +25,10 @@ func _ready():
 	random.randomize()
 
 func _on_tick(ticks: int):
-	if ticks % random.randi_range(1, 1000) == 0:
+	if ticks % random.randi_range(1, 65) == 0:
 		NotificationManager._add_notification_to_queue()
 
 	if ticks % 3 == 0 && rest_status > 0:
-
 		rest_status -= 3
 		rest_status = clamp(rest_status, 0, 100)
 		UI.set_rest(rest_status)
@@ -43,9 +44,11 @@ func _notification_timeout():
 	pass
 
 func sleep():
+	player.hide()
 	time_controller.reset_day()
-	UI._sleep_transition(["fade_in", "fade_out"])
+	await UI._sleep_transition(["fade_in", "fade_out"])
 	_set_rest_status(100)
+	player.show()
 	pass
 
 func _set_rest_status(value: int):
@@ -54,11 +57,11 @@ func _set_rest_status(value: int):
 	
 func toggle_computer_mode():
 	computer_on = !computer_on
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	UI.computer_toggle()
+	UI.computer_toggle(computer_on)
 	
 func is_computer_mode_on() -> bool:
 	return computer_on
+	
 		
 	
 	

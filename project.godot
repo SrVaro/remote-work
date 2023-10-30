@@ -25,6 +25,7 @@ GameSystem="*res://Prefabs/game_system.tscn"
 
 [display]
 
+window/size/mode=2
 window/size/always_on_top=true
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"

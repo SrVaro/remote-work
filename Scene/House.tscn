@@ -939,7 +939,6 @@ z_index = 1
 position = Vector2(305, 202)
 
 [node name="Bed" parent="." instance=ExtResource("6_0esmj")]
-process_mode = 3
 position = Vector2(146, 540)
 
 [node name="Calendar" type="Sprite2D" parent="."]

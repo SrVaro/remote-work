@@ -4,8 +4,8 @@ extends CanvasLayer
 
 @onready var notification_list = $Control/Window/ComputerDesk/WorkExeScreen/NotificationList
 
-@onready var sleep_transition = $Control/SleepTransition
-@onready var day_of_the_week_label = $Control/SleepTransition/DayOfTheWeekLabel
+@onready var sleep_transition = $SleepTransition
+@onready var day_of_the_week_label = $SleepTransition/DayOfTheWeekLabel
 
 @onready var computer_desk = $Control/Window/ComputerDesk
 
@@ -30,12 +30,6 @@ var alpha_actual: float = 0
 func _ready():
 	Events.day_passed.connect(_day_passed)
 
-func _process(_delta):
-	if transition_running:
-		sleep_transition.color.a =  lerp(alpha_actual, alpha_objective, transition_state)
-		day_of_the_week_label.modulate.a  =  lerp(alpha_actual, alpha_objective, transition_state)
-		transition_state += 0.01
-
 func _add_notification(notification) -> void:
 	if(notification):
 		notification_list.add_child(notification)
@@ -53,21 +47,25 @@ func _remove_first_notification() -> void:
 func _day_passed(value: String):
 	day_of_the_week_label.text = value
 		
-func _sleep_transition(types):
-	for type in types:
-		transition_running = true
-		transition_state = 0
+func _sleep_transition(type):
+	transition_state = 0
+	var transition_finished: bool = false
+	while !transition_finished:
 		
 		if type == "fade_in":
-			alpha_objective = 1
-			alpha_actual = 0
+			sleep_transition.color.a =  lerp(0, 1, transition_state)
+			day_of_the_week_label.modulate.a  =  lerp(0, 1, transition_state)
 
 		if type == "fade_out":
-			alpha_objective = 0
-			alpha_actual = 1
-
-		await get_tree().create_timer(1.75).timeout
-	transition_running = false		
+			sleep_transition.color.a =  lerp(1, 0, transition_state)
+			day_of_the_week_label.modulate.a  =  lerp(1, 0, transition_state)
+			
+		transition_state += 0.01
+		
+		await get_tree().create_timer(0.01).timeout
+		
+		if transition_state >= 1:
+			transition_finished = true
 		
 func set_time(minutes: int, seconds: int):
 	var day_format_string:String = "%02d:%02d" % [minutes, seconds]
@@ -111,6 +109,10 @@ func toggle_pause_game(with_menu: bool):
 func _input(event):
 	if event.is_action_pressed("pause_menu"):
 		toggle_pause_game(true)
+	
+func disable_main_menu():
+	main_menu.get_node("Panel2/NewGame").disabled = !main_menu.get_node("Panel2/NewGame").disabled
+	main_menu.get_node("Panel3/ExitGame").disabled = !main_menu.get_node("Panel3/ExitGame").disabled
 	
 func toggle_main_menu():
 	main_menu.visible = !main_menu.visible

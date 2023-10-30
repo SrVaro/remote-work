@@ -51,6 +51,7 @@ func reset_day():
 	night_mode = false
 	get_tree().call_group("Lights","toggle_lights")
 	lightning_level = 255
+	canvas_modulate.color = Color(1, 1, 1, 1)
 	minutes = 0
 	hours = 8
 

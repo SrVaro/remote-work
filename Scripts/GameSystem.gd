@@ -27,15 +27,16 @@ func _ready():
 	random.randomize()
 
 func start_game():
+	UI.disable_main_menu()
+	await UI._sleep_transition("fade_in")
 	UI.toggle_main_menu()
-	get_tree().paused = false
-	UI._sleep_transition(["fade_in"])
+	time_controller.reset_day()
 	main_menu.enabled = false
 	UI.get_node("Control").show()
-	time_controller.reset_day()
 	player.show()
 	player.get_node("PlayerCamera").enabled = true
-	UI._sleep_transition(["fade_out"])
+	await UI._sleep_transition("fade_out")
+	get_tree().paused = false
 
 func _on_tick(ticks: int):
 	if ticks % random.randi_range(1, 65) == 0:

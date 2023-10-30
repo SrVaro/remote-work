@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var time_controller = $TimeController
 @onready var player = get_node("/root/MainScene/Player")
+@onready var main_menu = $MainMenu
 
 
 var job_status: int = 100
@@ -16,6 +17,7 @@ var random = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#UI._sleep_transition(["fade_out"])
+	
 	get_tree().paused = true
 	UI.get_node("Control").hide()
 	Events.tick.connect(_on_tick)
@@ -23,6 +25,17 @@ func _ready():
 		NotificationManager.connect("notification_timeout", _notification_timeout)
 		
 	random.randomize()
+
+func start_game():
+	UI.toggle_main_menu()
+	get_tree().paused = false
+	UI._sleep_transition(["fade_in"])
+	main_menu.enabled = false
+	UI.get_node("Control").show()
+	time_controller.reset_day()
+	player.show()
+	player.get_node("PlayerCamera").enabled = true
+	UI._sleep_transition(["fade_out"])
 
 func _on_tick(ticks: int):
 	if ticks % random.randi_range(1, 65) == 0:

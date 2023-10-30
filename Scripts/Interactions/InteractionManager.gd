@@ -19,7 +19,7 @@ func unregister_area(area: InteractionArea):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if active_areas.size() > 0 && can_interact:
+	if active_areas.size() > 0 && can_interact && active_areas[0].available:
 		active_areas.sort_custom(_sort_by_distance_to_player)
 		if active_areas[0].action_name == "any_button":
 			label.text = "¡Pulsa cualquier boton del teclado!"

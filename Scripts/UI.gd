@@ -19,6 +19,8 @@ extends CanvasLayer
 
 @onready var pause_margin = $Control/PauseMargin
 
+@onready var main_menu = $MainMenu
+
 var transition_running: bool = false
 
 var transition_state: float = 0
@@ -52,13 +54,11 @@ func _day_passed(value: String):
 	day_of_the_week_label.text = value
 		
 func _sleep_transition(types):
-	
-	#toggle_pause_game(false)
 	for type in types:
 		transition_running = true
 		transition_state = 0
 		
-		if (type == "fade_in"):
+		if type == "fade_in":
 			alpha_objective = 1
 			alpha_actual = 0
 
@@ -67,9 +67,7 @@ func _sleep_transition(types):
 			alpha_actual = 1
 
 		await get_tree().create_timer(1.75).timeout
-		transition_running = false
-	#toggle_pause_game(false)
-		
+	transition_running = false		
 		
 func set_time(minutes: int, seconds: int):
 	var day_format_string:String = "%02d:%02d" % [minutes, seconds]
@@ -113,10 +111,16 @@ func toggle_pause_game(with_menu: bool):
 func _input(event):
 	if event.is_action_pressed("pause_menu"):
 		toggle_pause_game(true)
+	
+func toggle_main_menu():
+	main_menu.visible = !main_menu.visible
 
 func _on_continue_button_pressed():
 	toggle_pause_game(true)
 
 func _on_exit_button_pressed():
 	get_tree().quit()
+
+func _on_new_game_pressed():
+	GameSystem.start_game()
 

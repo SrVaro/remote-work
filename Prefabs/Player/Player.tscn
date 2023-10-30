@@ -153,6 +153,6 @@ sprite_frames = SubResource("SpriteFrames_iq2rs")
 animation = &"WalkDown"
 autoplay = "WalkDown"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="PlayerCamera" type="Camera2D" parent="."]
 scale = Vector2(0.2, 0.2)
 enabled = false

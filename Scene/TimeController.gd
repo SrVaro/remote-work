@@ -8,7 +8,7 @@ var hours: int = 8
 const days_of_week_enum = ["Lunes", "Martes", "Mierx", "Jueves", "Viernes", "Sabado", "Domingo"]
 var day_of_week = 0
 
-var night_mode: bool = false
+var night_mode: bool = true
 
 var lightning_level: float = 255
 

@@ -180,8 +180,7 @@ position = Vector2(5.8, -11.2)
 sprite_frames = SubResource("SpriteFrames_ta3jq")
 
 [node name="NightLight" type="AnimatedSprite2D" parent="DeskLamp"]
-visible = false
-position = Vector2(-3.4, -12)
+position = Vector2(5, -11.8)
 sprite_frames = SubResource("SpriteFrames_t5wv0")
 
 [connection signal="body_entered" from="Computer/InteractionArea" to="Computer/InteractionArea" method="_on_body_entered"]

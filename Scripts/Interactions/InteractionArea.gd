@@ -3,6 +3,8 @@ class_name InteractionArea
 
 @export var action_name: String = "interact"
 
+var available: bool = true
+
 func _on_body_entered(body):
 	InteractionManager.register_area(self)
 

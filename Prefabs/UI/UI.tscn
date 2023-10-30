@@ -438,19 +438,23 @@ theme_override_fonts/font = ExtResource("8_0rcep")
 theme_override_font_sizes/font_size = 70
 text = "Salir"
 
-[node name="MainMenu" type="Camera2D" parent="."]
-process_mode = 3
-position = Vector2(160, 533)
-zoom = Vector2(5, 5)
+[node name="MainMenu" type="Control" parent="."]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Panel" type="Panel" parent="MainMenu"]
-offset_left = -40.0
-offset_top = -501.0
-offset_bottom = -461.0
+offset_left = 104.0
+offset_top = 33.0
+offset_right = 144.0
+offset_bottom = 73.0
 scale = Vector2(11.6399, 7.2138)
 theme_override_styles/panel = SubResource("StyleBoxFlat_hixpu")
 
 [node name="GameTitle" type="Label" parent="MainMenu/Panel"]
+layout_mode = 0
 offset_left = -5.735
 offset_top = -8.67539
 offset_right = 141.265
@@ -463,14 +467,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Panel2" type="Panel" parent="MainMenu"]
-offset_left = 502.0
-offset_top = -501.0
-offset_right = 542.0
-offset_bottom = -461.0
+offset_left = 646.0
+offset_top = 33.0
+offset_right = 686.0
+offset_bottom = 73.0
 scale = Vector2(9.5358, 3.32927)
 theme_override_styles/panel = SubResource("StyleBoxFlat_tgu1c")
 
 [node name="NewGame" type="Button" parent="MainMenu/Panel2"]
+layout_mode = 0
 offset_left = -0.44577
 offset_right = 58.5542
 offset_bottom = 21.0
@@ -482,14 +487,15 @@ text = "Nueva partida"
 flat = true
 
 [node name="Panel3" type="Panel" parent="MainMenu"]
-offset_left = 502.0
-offset_top = -351.0
-offset_right = 542.0
-offset_bottom = -311.0
+offset_left = 646.0
+offset_top = 183.0
+offset_right = 686.0
+offset_bottom = 223.0
 scale = Vector2(9.51237, 3.32109)
 theme_override_styles/panel = SubResource("StyleBoxFlat_i10yx")
 
 [node name="ExitGame" type="Button" parent="MainMenu/Panel3"]
+layout_mode = 0
 offset_right = 59.0
 offset_bottom = 21.0
 scale = Vector2(0.675192, 1.88782)
@@ -506,4 +512,5 @@ flat = true
 [connection signal="text_changed" from="Control/Window/ComputerDesk/WorkExeScreen/TextEdit" to="." method="_on_text_edit_text_changed"]
 [connection signal="pressed" from="Control/PauseMargin/PauseMenu/PauseMenuContents/MarginContinueButton/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Control/PauseMargin/PauseMenu/PauseMenuContents/MarginExitButton/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MainMenu/Panel2/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="MainMenu/Panel3/ExitGame" to="." method="_on_exit_button_pressed"]

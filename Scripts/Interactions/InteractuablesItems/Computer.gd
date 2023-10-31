@@ -71,6 +71,7 @@ func _process(delta):
 	
 func _trigger_computer():
 	GameSystem.toggle_computer_mode()
+	text_edit.text = ""
 
 func _on_text_edit_text_changed():
 	text_edit.remove_text(text_upd_counter, 0, text_upd_counter, 1)

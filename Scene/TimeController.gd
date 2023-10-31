@@ -43,11 +43,17 @@ func _on_tick(ticks: int):
 		night_mode = false
 		get_tree().call_group("Lights","toggle_lights")
 		
+	if (hours >= 2 && hours <= 3) && night_mode:
+		GameSystem.job_ended()
+		
+	if (hours >= 2 && hours <= 3) && night_mode:
+		GameSystem.sleep()
+		
 func day_passed():
 	day_of_week += 1
 	Events.day_passed.emit(days_of_week_enum[day_of_week])
 	
-func reset_day():
+func reset_lights():
 	night_mode = false
 	get_tree().call_group("Lights","toggle_lights")
 	lightning_level = 255

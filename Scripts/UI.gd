@@ -6,6 +6,7 @@ extends CanvasLayer
 
 @onready var sleep_transition = $SleepTransition
 @onready var day_of_the_week_label = $SleepTransition/DayOfTheWeekLabel
+@onready var day_description = $SleepTransition/VBoxContainer/DayDescription
 
 @onready var computer_desk = $Control/Window/ComputerDesk
 
@@ -46,19 +47,25 @@ func _remove_first_notification() -> void:
 		
 func _day_passed(value: String):
 	day_of_the_week_label.text = value
+	
+func _set_transition_text(text: String):
+	day_description.text = text
 		
-func _sleep_transition(type):
+func fade_transition(type: String, wait_sec: float):
 	transition_state = 0
 	var transition_finished: bool = false
-	while !transition_finished:
+	var goal_alpha: float
+	var actual_alpha: float
+	
+	if type == "fade_in":
+		goal_alpha = 1
+	elif type == "fade_out":
+		goal_alpha = 0
 		
-		if type == "fade_in":
-			sleep_transition.color.a =  lerp(0, 1, transition_state)
-			day_of_the_week_label.modulate.a  =  lerp(0, 1, transition_state)
-
-		if type == "fade_out":
-			sleep_transition.color.a =  lerp(1, 0, transition_state)
-			day_of_the_week_label.modulate.a  =  lerp(1, 0, transition_state)
+	actual_alpha = sleep_transition.modulate.a
+		
+	while !transition_finished:
+		sleep_transition.modulate.a =  lerp(actual_alpha, goal_alpha, transition_state)
 			
 		transition_state += 0.01
 		
@@ -66,6 +73,9 @@ func _sleep_transition(type):
 		
 		if transition_state >= 1:
 			transition_finished = true
+			sleep_transition.modulate.a = goal_alpha
+			
+	await get_tree().create_timer(wait_sec).timeout
 		
 func set_time(minutes: int, seconds: int):
 	var day_format_string:String = "%02d:%02d" % [minutes, seconds]

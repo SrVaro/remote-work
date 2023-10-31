@@ -4,20 +4,16 @@ extends Node2D
 @onready var player = get_node("/root/MainScene/Player")
 @onready var main_menu = $MainMenu
 
-
 var job_status: int = 100
 var rest_status: int = 100
 var health_status: int = 100
 
 var computer_on: bool = false
 
-
 var random = RandomNumberGenerator.new()
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	#UI._sleep_transition(["fade_out"])
-	
 	get_tree().paused = true
 	UI.get_node("Control").hide()
 	Events.tick.connect(_on_tick)
@@ -28,14 +24,15 @@ func _ready():
 
 func start_game():
 	UI.disable_main_menu()
-	await UI._sleep_transition("fade_in")
+	await UI.fade_transition("fade_in", 6.5)
 	UI.toggle_main_menu()
-	time_controller.reset_day()
+	time_controller.reset_lights()
 	main_menu.enabled = false
 	UI.get_node("Control").show()
 	player.show()
 	player.get_node("PlayerCamera").enabled = true
-	await UI._sleep_transition("fade_out")
+	await UI.fade_transition("fade_out", 0)
+	UI._set_transition_text("")
 	get_tree().paused = false
 
 func _on_tick(ticks: int):
@@ -59,10 +56,13 @@ func _notification_timeout():
 
 func sleep():
 	player.hide()
-	time_controller.reset_day()
-	await UI._sleep_transition(["fade_in", "fade_out"])
+	await UI.fade_transition("fade_in", 2)
+	time_controller.reset_lights()
 	_set_rest_status(100)
 	player.show()
+	await UI.fade_transition("fade_out", 0)
+
+func job_ended():
 	pass
 
 func _set_rest_status(value: int):

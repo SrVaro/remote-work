@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://otme5pyay7dk"]
+[gd_scene load_steps=39 format=3 uid="uid://otme5pyay7dk"]
 
 [ext_resource type="Script" path="res://Scripts/UI.gd" id="1_mwmaw"]
 [ext_resource type="Texture2D" uid="uid://qtgm4duprh3l" path="res://Sprites/UI/under_bar.png" id="2_g5v4w"]
@@ -9,6 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://6vem2u3jqolt" path="res://Sprites/Furniture/work_exe_screen.png" id="7_gaun1"]
 [ext_resource type="FontFile" uid="uid://c5bl2x3fm6684" path="res://m3x6.ttf" id="8_0rcep"]
 [ext_resource type="Texture2D" uid="uid://cuhoix2x7c6er" path="res://Sprites/UI/progress_bar.png" id="9_5rjek"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4l2rv"]
+font = ExtResource("8_0rcep")
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_dl7cb"]
+font = ExtResource("8_0rcep")
+font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_lumme"]
 font = ExtResource("8_0rcep")
@@ -135,28 +143,49 @@ script = ExtResource("1_mwmaw")
 
 [node name="SleepTransition" type="ColorRect" parent="."]
 process_mode = 3
+modulate = Color(1, 1, 1, 0)
 z_index = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.227451, 0.266667, 0.4, 0)
+color = Color(0.227451, 0.266667, 0.4, 1)
 
-[node name="DayOfTheWeekLabel" type="Label" parent="SleepTransition"]
-modulate = Color(1, 1, 1, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="SleepTransition"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.5
+offset_top = -51.5
+offset_right = 77.5
+offset_bottom = 51.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("8_0rcep")
+
+[node name="DayOfTheWeekLabel" type="Label" parent="SleepTransition/VBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 125
 text = "lunes"
+label_settings = SubResource("LabelSettings_4l2rv")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="DayDescription" type="Label" parent="SleepTransition/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_0rcep")
+text = "Lunes por la mañana despues de un domingo de fiesta...
+Solo tengo que aguantar el tipo hasta las 18:00 para volver
+poder meterme en la cama y pasar la resaca...
+
+🤢"
+label_settings = SubResource("LabelSettings_dl7cb")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -332,7 +361,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 157.02
-offset_bottom = 61.815
+offset_bottom = 43.3
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)

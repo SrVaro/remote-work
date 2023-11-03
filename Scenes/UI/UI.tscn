@@ -1,0 +1,617 @@
+[gd_scene load_steps=43 format=3 uid="uid://otme5pyay7dk"]
+
+[ext_resource type="Script" path="res://Scenes/UI/UI.gd" id="1_mwmaw"]
+[ext_resource type="Texture2D" uid="uid://qtgm4duprh3l" path="res://Sprites/UI/under_bar.png" id="2_g5v4w"]
+[ext_resource type="Texture2D" uid="uid://0e0pxmta2m3r" path="res://Sprites/UI/over_bar.png" id="3_3p8sl"]
+[ext_resource type="Texture2D" uid="uid://xm6f8dk7435t" path="res://Sprites/Furniture/clock.png" id="4_48ce2"]
+[ext_resource type="Texture2D" uid="uid://ce62ek6mgtoo0" path="res://Sprites/UIComputer/animation/desktop-sheet.png" id="6_c6tcn"]
+[ext_resource type="Texture2D" uid="uid://lyrwdedm6pei" path="res://Sprites/UIComputer/work_icon.png" id="7_0bf5u"]
+[ext_resource type="FontFile" uid="uid://c5bl2x3fm6684" path="res://m3x6.ttf" id="8_0rcep"]
+[ext_resource type="Texture2D" uid="uid://6vem2u3jqolt" path="res://Sprites/UIComputer/work_exe_screen.png" id="8_xa2my"]
+[ext_resource type="Texture2D" uid="uid://cuhoix2x7c6er" path="res://Sprites/UI/progress_bar.png" id="9_5rjek"]
+[ext_resource type="Texture2D" uid="uid://dec3vw4ae1xle" path="res://Sprites/Furniture/phone.png" id="10_50mpe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4l2rv"]
+font = ExtResource("8_0rcep")
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_dl7cb"]
+font = ExtResource("8_0rcep")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_lumme"]
+font = ExtResource("8_0rcep")
+font_size = 112
+
+[sub_resource type="LabelSettings" id="LabelSettings_xsr25"]
+font_size = 18
+
+[sub_resource type="Animation" id="Animation_8pbs3"]
+resource_name = "phone_on"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Phone/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.1, 0, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(591, 849), Vector2(591, 849), Vector2(591, 362)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h1im7"]
+_data = {
+"phone_on": SubResource("Animation_8pbs3")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_y6g5w"]
+font = ExtResource("8_0rcep")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob8ki"]
+atlas = ExtResource("6_c6tcn")
+region = Rect2(0, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0fe6"]
+atlas = ExtResource("6_c6tcn")
+region = Rect2(183, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2ka0"]
+atlas = ExtResource("6_c6tcn")
+region = Rect2(366, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwkqe"]
+atlas = ExtResource("6_c6tcn")
+region = Rect2(549, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmqpe"]
+atlas = ExtResource("6_c6tcn")
+region = Rect2(732, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mq83t"]
+atlas = ExtResource("6_c6tcn")
+region = Rect2(915, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5me7w"]
+atlas = ExtResource("6_c6tcn")
+region = Rect2(1098, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q27dk"]
+atlas = ExtResource("6_c6tcn")
+region = Rect2(1281, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhn1h"]
+atlas = ExtResource("6_c6tcn")
+region = Rect2(1464, 0, 183, 118)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hl7k2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob8ki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0fe6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2ka0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwkqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmqpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mq83t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5me7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q27dk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhn1h")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22a7o"]
+content_margin_left = 3.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1yr5x"]
+content_margin_left = 3.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkohl"]
+content_margin_left = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rnva6"]
+bg_color = Color(0.239216, 0.662745, 0.878431, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8vitq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m0qt8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3vvx4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hixpu"]
+bg_color = Color(0, 0.584314, 0.913725, 0.478431)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8e5y4"]
+line_spacing = -22.0
+font = ExtResource("8_0rcep")
+font_size = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tgu1c"]
+bg_color = Color(0.0705882, 0.305882, 0.537255, 0.478431)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fapdi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rqv0h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i10yx"]
+bg_color = Color(0.0705882, 0.305882, 0.537255, 0.478431)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6x2dd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oualq"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_mwmaw")
+
+[node name="SleepTransition" type="ColorRect" parent="."]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.227451, 0.266667, 0.4, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SleepTransition"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.5
+offset_top = -51.5
+offset_right = 77.5
+offset_bottom = 51.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DayOfTheWeekLabel" type="Label" parent="SleepTransition/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 125
+text = "lunes"
+label_settings = SubResource("LabelSettings_4l2rv")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="DayDescription" type="Label" parent="SleepTransition/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_0rcep")
+text = "Lunes por la mañana despues de un domingo de fiesta...
+Solo tengo que aguantar el tipo hasta las 18:00 para
+poder meterme en la cama de nuevo y pasar la resaca...
+
+🤢"
+label_settings = SubResource("LabelSettings_dl7cb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HUD" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="HBoxClock" type="HBoxContainer" parent="HUD/MarginContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="ClockRect" type="TextureRect" parent="HUD/MarginContainer/VBoxContainer3/HBoxClock"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("4_48ce2")
+
+[node name="TimeOfDay" type="Label" parent="HUD/MarginContainer/VBoxContainer3/HBoxClock"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "08:00
+"
+label_settings = SubResource("LabelSettings_lumme")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="HUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/MarginContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="JobStatus" type="TextureProgressBar" parent="HUD/MarginContainer/VBoxContainer4/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+texture_under = ExtResource("2_g5v4w")
+texture_progress = ExtResource("3_3p8sl")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/MarginContainer/VBoxContainer4/VBoxContainer/JobStatus"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+
+[node name="Label" type="Label" parent="HUD/MarginContainer/VBoxContainer4/VBoxContainer/JobStatus/MarginContainer"]
+layout_mode = 2
+text = "Job status"
+label_settings = SubResource("LabelSettings_xsr25")
+vertical_alignment = 1
+
+[node name="Health" type="TextureProgressBar" parent="HUD/MarginContainer/VBoxContainer4/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+texture_under = ExtResource("2_g5v4w")
+texture_progress = ExtResource("3_3p8sl")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/MarginContainer/VBoxContainer4/VBoxContainer/Health"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+
+[node name="Label" type="Label" parent="HUD/MarginContainer/VBoxContainer4/VBoxContainer/Health/MarginContainer"]
+layout_mode = 2
+text = "Health"
+label_settings = SubResource("LabelSettings_xsr25")
+vertical_alignment = 1
+
+[node name="Rest" type="TextureProgressBar" parent="HUD/MarginContainer/VBoxContainer4/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+texture_under = ExtResource("2_g5v4w")
+texture_progress = ExtResource("3_3p8sl")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/MarginContainer/VBoxContainer4/VBoxContainer/Rest"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+
+[node name="Label" type="Label" parent="HUD/MarginContainer/VBoxContainer4/VBoxContainer/Rest/MarginContainer"]
+layout_mode = 2
+text = "Rest
+"
+label_settings = SubResource("LabelSettings_xsr25")
+vertical_alignment = 1
+
+[node name="Phone" type="AnimationPlayer" parent="HUD"]
+libraries = {
+"": SubResource("AnimationLibrary_h1im7")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD/Phone"]
+z_index = 2
+position = Vector2(591, 849)
+scale = Vector2(5, 5)
+texture = ExtResource("10_50mpe")
+
+[node name="Label" type="Label" parent="HUD/Phone/Sprite2D"]
+offset_left = -18.0
+offset_top = -28.6
+offset_right = 22.0
+offset_bottom = 3.40001
+scale = Vector2(0.90967, 0.971301)
+text = "8:00
+"
+label_settings = SubResource("LabelSettings_y6g5w")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Window" type="Control" parent="HUD"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -457.5
+offset_top = -295.0
+offset_right = 457.5
+offset_bottom = 295.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ComputerDesk" type="AnimatedSprite2D" parent="HUD/Window"]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_hl7k2")
+frame = 8
+frame_progress = 1.0
+centered = false
+
+[node name="IconsMargin" type="MarginContainer" parent="HUD/Window"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Icons" type="HBoxContainer" parent="HUD/Window/IconsMargin"]
+visible = false
+layout_mode = 2
+
+[node name="WorkExe" type="Button" parent="HUD/Window/IconsMargin/Icons"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_22a7o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1yr5x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dkohl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rnva6")
+icon = ExtResource("7_0bf5u")
+flat = true
+expand_icon = true
+
+[node name="WorkExeScreen" type="TextureRect" parent="HUD/Window"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_xa2my")
+
+[node name="TextEditMargin" type="MarginContainer" parent="HUD/Window/WorkExeScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 100
+
+[node name="NotificationList" type="VBoxContainer" parent="HUD/Window/WorkExeScreen/TextEditMargin"]
+custom_minimum_size = Vector2(222.195, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="TextEdit" type="TextEdit" parent="HUD/Window/WorkExeScreen/TextEditMargin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.388235, 0.780392, 0.301961, 1)
+theme_override_fonts/font = ExtResource("8_0rcep")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8vitq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m0qt8")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_3vvx4")
+text = "dsafasdfasdfasdf"
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+caret_blink = true
+
+[node name="ProgressBar" type="TextureProgressBar" parent="HUD/Window/WorkExeScreen"]
+custom_minimum_size = Vector2(0, 39.7)
+layout_mode = 2
+offset_left = 22.5
+offset_top = 469.0
+offset_right = 867.5
+offset_bottom = 508.7
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.02825, 1.04743)
+size_flags_vertical = 8
+nine_patch_stretch = true
+texture_under = ExtResource("9_5rjek")
+texture_progress = ExtResource("3_3p8sl")
+
+[node name="PauseMargin" type="MarginContainer" parent="HUD"]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenu" type="ColorRect" parent="HUD/PauseMargin"]
+layout_mode = 2
+color = Color(0.227451, 0.266667, 0.4, 1)
+
+[node name="PauseMenuContents" type="VBoxContainer" parent="HUD/PauseMargin/PauseMenu"]
+layout_mode = 2
+offset_left = 441.0
+offset_top = 202.0
+offset_right = 710.0
+offset_bottom = 445.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/PauseMargin/PauseMenu/PauseMenuContents"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 18
+
+[node name="PauseMenuTitle" type="Label" parent="HUD/PauseMargin/PauseMenu/PauseMenuContents/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_0rcep")
+theme_override_font_sizes/font_size = 100
+text = "Pause Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="MarginContinueButton" type="MarginContainer" parent="HUD/PauseMargin/PauseMenu/PauseMenuContents"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ContinueButton" type="Button" parent="HUD/PauseMargin/PauseMenu/PauseMenuContents/MarginContinueButton"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_0rcep")
+theme_override_font_sizes/font_size = 70
+text = "Continuar"
+
+[node name="MarginExitButton" type="MarginContainer" parent="HUD/PauseMargin/PauseMenu/PauseMenuContents"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ExitButton" type="Button" parent="HUD/PauseMargin/PauseMenu/PauseMenuContents/MarginExitButton"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_0rcep")
+theme_override_font_sizes/font_size = 70
+text = "Salir"
+
+[node name="MainMenu" type="Control" parent="."]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MainMenu"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 33.0
+offset_right = 144.0
+offset_bottom = 73.0
+scale = Vector2(11.6399, 7.2138)
+theme_override_styles/panel = SubResource("StyleBoxFlat_hixpu")
+
+[node name="GameTitle" type="Label" parent="MainMenu/Panel"]
+layout_mode = 0
+offset_left = -5.735
+offset_top = -8.67539
+offset_right = 141.265
+offset_bottom = 93.3246
+scale = Vector2(0.360228, 0.532759)
+text = "REMOTE
+WORK"
+label_settings = SubResource("LabelSettings_8e5y4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="MainMenu"]
+layout_mode = 0
+offset_left = 646.0
+offset_top = 33.0
+offset_right = 686.0
+offset_bottom = 73.0
+scale = Vector2(9.5358, 3.32927)
+theme_override_styles/panel = SubResource("StyleBoxFlat_tgu1c")
+
+[node name="NewGame" type="Button" parent="MainMenu/Panel2"]
+layout_mode = 0
+offset_left = -0.44577
+offset_right = 58.5542
+offset_bottom = 21.0
+scale = Vector2(0.693888, 1.81994)
+theme_override_fonts/font = ExtResource("8_0rcep")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fapdi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rqv0h")
+text = "Nueva partida"
+flat = true
+
+[node name="Panel3" type="Panel" parent="MainMenu"]
+layout_mode = 0
+offset_left = 646.0
+offset_top = 183.0
+offset_right = 686.0
+offset_bottom = 223.0
+scale = Vector2(9.51237, 3.32109)
+theme_override_styles/panel = SubResource("StyleBoxFlat_i10yx")
+
+[node name="ExitGame" type="Button" parent="MainMenu/Panel3"]
+layout_mode = 0
+offset_right = 59.0
+offset_bottom = 21.0
+scale = Vector2(0.675192, 1.88782)
+theme_override_constants/h_separation = 0
+theme_override_fonts/font = ExtResource("8_0rcep")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6x2dd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oualq")
+text = "Salir"
+flat = true
+
+[connection signal="animation_finished" from="HUD/Window/ComputerDesk" to="." method="_on_computer_desk_animation_finished"]
+[connection signal="pressed" from="HUD/Window/IconsMargin/Icons/WorkExe" to="." method="_on_work_exe_pressed"]
+[connection signal="text_changed" from="HUD/Window/WorkExeScreen/TextEditMargin/TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="HUD/PauseMargin/PauseMenu/PauseMenuContents/MarginContinueButton/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="HUD/PauseMargin/PauseMenu/PauseMenuContents/MarginExitButton/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MainMenu/Panel2/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MainMenu/Panel3/ExitGame" to="." method="_on_exit_button_pressed"]

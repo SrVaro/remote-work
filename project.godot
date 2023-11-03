@@ -11,25 +11,22 @@ config_version=5
 [application]
 
 config/name="Remote Work"
-run/main_scene="res://Scene/MainScene.tscn"
+run/main_scene="res://Scenes/MainScene/MainScene.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
-config/icon="res://Sprites/UI/icon.svg"
 
 [autoload]
 
-InteractionManager="*res://Components/Interactions/InteractionManager.tscn"
-UI="*res://Prefabs/UI/UI.tscn"
-NotificationManager="*res://Scripts/NotificationManager.gd"
-Events="*res://Scripts/Events.gd"
-GameSystem="*res://Prefabs/game_system.tscn"
+InteractionManager="*res://Scenes/Interactions/InteractionManager.tscn"
+NotificationManager="*res://Scenes/Notifications/NotificationManager.gd"
+UI="*res://Scenes/UI/UI.tscn"
+Events="*res://Scenes/EventBus/Events.gd"
+GameSystem="*res://Scenes/MainScene/GameController.tscn"
 
 [display]
 
-window/size/mode=2
 window/size/always_on_top=true
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
-mouse_cursor/custom_image="res://Win95Def.png"
 window/snap/snap_2d_transforms_to_pixel=true
 window/snap/snap_2d_vertices_to_pixel=true
 

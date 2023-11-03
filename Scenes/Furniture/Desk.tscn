@@ -1,0 +1,162 @@
+[gd_scene load_steps=22 format=3 uid="uid://ftklnyk3h6ce"]
+
+[ext_resource type="Texture2D" uid="uid://co4jxxxxdc53u" path="res://Sprites/Furniture/desk.png" id="1_654qs"]
+[ext_resource type="Script" path="res://Scenes/Furniture/Computer.gd" id="2_3aoqy"]
+[ext_resource type="Texture2D" uid="uid://byroulmhnbvgs" path="res://Sprites/Furniture/animations/computer_working.png" id="5_sry4v"]
+[ext_resource type="Script" path="res://Scenes/Interactions/InteractionArea.gd" id="5_x0rr4"]
+[ext_resource type="Texture2D" uid="uid://cxyi2fcyn1ell" path="res://Sprites/Furniture/computer.png" id="6_6qw58"]
+[ext_resource type="Texture2D" uid="uid://cwdpjsr5gwpcs" path="res://Sprites/Furniture/lamp.png" id="8_1cykt"]
+[ext_resource type="Texture2D" uid="uid://0df2a03xwons" path="res://Sprites/UI/notification_alert.png" id="8_1t7to"]
+[ext_resource type="Script" path="res://Scenes/Furniture/DeskLamp.gd" id="9_ax2kl"]
+[ext_resource type="Texture2D" uid="uid://32nfd07ux7ea" path="res://Sprites/Furniture/lamp_light.png" id="9_hs4hh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rseg4"]
+size = Vector2(44, 25.8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f2e16"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_654qs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2ass5"]
+polygon = PackedVector2Array(-14.6442, -12.9779, -19.9526, -4.0414, -20.001, -0.0416967, -18.2132, 0.979982, -16.0133, 1.00657, -16.1583, 13.0057, -13.1586, 13.0419, -13.0136, 1.04282, -11.0137, 1.06699, -11.0741, 6.06662, -8.07434, 6.10287, -8.01392, 1.10324, 10.9847, 1.33284, 10.8397, 13.332, 12.8395, 13.3561, 12.8516, 12.3562, 13.8516, 12.3683, 13.9845, 1.36909, 15.9843, 1.39326, 15.9239, 6.39289, 17.9238, 6.41706, 17.9358, 5.41713, 18.9358, 5.42922, 19.0445, -3.57012, 20.2469, -3.75561, 22.2975, -7.93113, 22.3313, -10.7309, 20.3532, -12.555, -11.5789, -12.9936)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvrkg"]
+atlas = ExtResource("5_sry4v")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csv3p"]
+atlas = ExtResource("5_sry4v")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0g15"]
+atlas = ExtResource("5_sry4v")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqevq"]
+atlas = ExtResource("5_sry4v")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8wmhg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_6qw58")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvrkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csv3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0g15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqevq")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ag6ag"]
+radius = 21.2132
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5eosx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_1t7to")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ta3jq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_1cykt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t5wv0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_hs4hh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Desk" type="StaticBody2D"]
+scale = Vector2(5, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.600001, 1.9)
+shape = SubResource("RectangleShape2D_rseg4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_f2e16")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite2D"]
+position = Vector2(1.49012e-08, 0.8)
+rotation = -0.0120844
+occluder = SubResource("OccluderPolygon2D_2ass5")
+
+[node name="Computer" type="Node2D" parent="."]
+position = Vector2(7.2, -10.2)
+script = ExtResource("2_3aoqy")
+
+[node name="Computer" type="AnimatedSprite2D" parent="Computer"]
+position = Vector2(0.8, 0.2)
+sprite_frames = SubResource("SpriteFrames_8wmhg")
+frame_progress = 0.697435
+
+[node name="InteractionArea" type="Area2D" parent="Computer"]
+position = Vector2(-7.2, -13.4)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_x0rr4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Computer/InteractionArea"]
+position = Vector2(-0.6, 24.4)
+shape = SubResource("CircleShape2D_ag6ag")
+
+[node name="NotificationAlert" type="AnimatedSprite2D" parent="Computer"]
+visible = false
+position = Vector2(13.2, -12.6)
+sprite_frames = SubResource("SpriteFrames_5eosx")
+
+[node name="DeskLamp" type="Node2D" parent="." groups=["Lights"]]
+position = Vector2(-2.4, 3.6)
+script = ExtResource("9_ax2kl")
+
+[node name="Lamp" type="AnimatedSprite2D" parent="DeskLamp"]
+position = Vector2(5.8, -11.2)
+sprite_frames = SubResource("SpriteFrames_ta3jq")
+
+[node name="NightLight" type="AnimatedSprite2D" parent="DeskLamp"]
+position = Vector2(5, -11.8)
+sprite_frames = SubResource("SpriteFrames_t5wv0")
+
+[connection signal="body_entered" from="Computer/InteractionArea" to="Computer/InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="Computer/InteractionArea" to="Computer/InteractionArea" method="_on_body_exited"]

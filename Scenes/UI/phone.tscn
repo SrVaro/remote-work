@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://kuf8ciasqhfk"]
+
+[ext_resource type="Texture2D" uid="uid://dec3vw4ae1xle" path="res://Sprites/Furniture/phone.png" id="1_cf128"]
+[ext_resource type="FontFile" uid="uid://c5bl2x3fm6684" path="res://m3x6.ttf" id="2_s0c5s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y6g5w"]
+font = ExtResource("2_s0c5s")
+
+[node name="Sprite2D" type="Sprite2D"]
+z_index = 2
+position = Vector2(591, 849)
+scale = Vector2(5, 5)
+texture = ExtResource("1_cf128")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -18.0
+offset_top = -28.6
+offset_right = 22.0
+offset_bottom = 3.40001
+scale = Vector2(0.90967, 0.971301)
+text = "8:00
+"
+label_settings = SubResource("LabelSettings_y6g5w")
+horizontal_alignment = 1
+autowrap_mode = 3

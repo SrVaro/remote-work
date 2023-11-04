@@ -8,7 +8,6 @@ extends Node2D
 
 @onready var notification_alert = $NotificationAlert
 
-	
 var code_example = [
 	"struct group_info *groups_alloc(int gidsetsize)",
 	"	{",
@@ -72,7 +71,7 @@ func _process(delta):
 func _trigger_computer():
 	GameSystem.toggle_computer_mode()
 	text_edit.text = ""
-	UI.show_phone()
+	#UI.show_phone()
 
 func _on_text_edit_text_changed():
 	text_edit.remove_text(text_upd_counter, 0, text_upd_counter, 1)

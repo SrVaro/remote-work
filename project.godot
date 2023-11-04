@@ -17,8 +17,8 @@ config/features=PackedStringArray("4.1", "Mobile")
 [autoload]
 
 InteractionManager="*res://Scenes/Interactions/InteractionManager.tscn"
-NotificationManager="*res://Scenes/Notifications/NotificationManager.gd"
 UI="*res://Scenes/UI/UI.tscn"
+NotificationManager="*res://Scenes/Notifications/NotificationManager.gd"
 Events="*res://Scenes/EventBus/Events.gd"
 GameSystem="*res://Scenes/MainScene/GameController.tscn"
 

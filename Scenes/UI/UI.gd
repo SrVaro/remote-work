@@ -46,8 +46,17 @@ var transition_state: float = 0
 var alpha_objective: float = 0
 var alpha_actual: float = 0
 
+var following = false
+var dragging_start_position = Vector2()
+
 func _ready():
 	Events.day_passed.connect(_day_passed)
+	
+
+
+func _process(_delta):
+	if following:
+		window.set_global_position(get_viewport().get_mouse_position())
 	
 func initialize_UI():
 	#hud.hide()
@@ -160,3 +169,15 @@ func _on_new_game_pressed():
 	
 func show_phone():
 	phone.play("phone_on")
+
+
+func _on_title_bar_gui_input(event):
+	print(event)
+	if event is InputEventMouseButton:
+		if event.get_button_index() == 1:
+			following = !following
+			dragging_start_position = get_viewport().get_mouse_position()
+
+func _on_CloseButton_pressed():
+	get_tree().quit()
+	

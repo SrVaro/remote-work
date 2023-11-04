@@ -1,0 +1,209 @@
+[gd_scene load_steps=24 format=3 uid="uid://0xmcxipg1ihx"]
+
+[ext_resource type="Texture2D" uid="uid://ce62ek6mgtoo0" path="res://Sprites/UIComputer/animation/desktop-sheet.png" id="1_kll8c"]
+[ext_resource type="Texture2D" uid="uid://lyrwdedm6pei" path="res://Sprites/UIComputer/work_icon.png" id="2_rth24"]
+[ext_resource type="Texture2D" uid="uid://6vem2u3jqolt" path="res://Sprites/UIComputer/work_exe_screen.png" id="3_c8hm3"]
+[ext_resource type="FontFile" uid="uid://c5bl2x3fm6684" path="res://m3x6.ttf" id="4_gkc44"]
+[ext_resource type="Texture2D" uid="uid://cuhoix2x7c6er" path="res://Sprites/UI/progress_bar.png" id="5_gjlbb"]
+[ext_resource type="Texture2D" uid="uid://0e0pxmta2m3r" path="res://Sprites/UI/over_bar.png" id="6_aw3wg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob8ki"]
+atlas = ExtResource("1_kll8c")
+region = Rect2(0, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0fe6"]
+atlas = ExtResource("1_kll8c")
+region = Rect2(183, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2ka0"]
+atlas = ExtResource("1_kll8c")
+region = Rect2(366, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwkqe"]
+atlas = ExtResource("1_kll8c")
+region = Rect2(549, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmqpe"]
+atlas = ExtResource("1_kll8c")
+region = Rect2(732, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mq83t"]
+atlas = ExtResource("1_kll8c")
+region = Rect2(915, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5me7w"]
+atlas = ExtResource("1_kll8c")
+region = Rect2(1098, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q27dk"]
+atlas = ExtResource("1_kll8c")
+region = Rect2(1281, 0, 183, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhn1h"]
+atlas = ExtResource("1_kll8c")
+region = Rect2(1464, 0, 183, 118)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hl7k2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob8ki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0fe6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2ka0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwkqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmqpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mq83t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5me7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q27dk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhn1h")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22a7o"]
+content_margin_left = 3.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1yr5x"]
+content_margin_left = 3.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkohl"]
+content_margin_left = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rnva6"]
+bg_color = Color(0.239216, 0.662745, 0.878431, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8vitq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m0qt8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3vvx4"]
+
+[node name="Window" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -457.5
+offset_top = -295.0
+offset_right = 457.5
+offset_bottom = 295.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ComputerDesk" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_hl7k2")
+frame = 8
+frame_progress = 1.0
+centered = false
+
+[node name="IconsMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Icons" type="HBoxContainer" parent="IconsMargin"]
+layout_mode = 2
+
+[node name="WorkExe" type="Button" parent="IconsMargin/Icons"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_22a7o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1yr5x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dkohl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rnva6")
+icon = ExtResource("2_rth24")
+flat = true
+expand_icon = true
+
+[node name="WorkExeScreen" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_c8hm3")
+
+[node name="TextEditMargin" type="MarginContainer" parent="WorkExeScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 100
+
+[node name="NotificationList" type="VBoxContainer" parent="WorkExeScreen/TextEditMargin"]
+custom_minimum_size = Vector2(222.195, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="TextEdit" type="TextEdit" parent="WorkExeScreen/TextEditMargin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.388235, 0.780392, 0.301961, 1)
+theme_override_fonts/font = ExtResource("4_gkc44")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8vitq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m0qt8")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_3vvx4")
+text = "dsafasdfasdfasdf"
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+caret_blink = true
+
+[node name="ProgressBar" type="TextureProgressBar" parent="WorkExeScreen"]
+custom_minimum_size = Vector2(0, 39.7)
+layout_mode = 2
+offset_left = 22.5
+offset_top = 469.0
+offset_right = 867.5
+offset_bottom = 508.7
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.02825, 1.04743)
+size_flags_vertical = 8
+nine_patch_stretch = true
+texture_under = ExtResource("5_gjlbb")
+texture_progress = ExtResource("6_aw3wg")

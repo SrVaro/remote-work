@@ -1,15 +1,15 @@
-[gd_scene load_steps=43 format=3 uid="uid://otme5pyay7dk"]
+[gd_scene load_steps=42 format=3 uid="uid://otme5pyay7dk"]
 
 [ext_resource type="Script" path="res://Scenes/UI/UI.gd" id="1_mwmaw"]
 [ext_resource type="Texture2D" uid="uid://qtgm4duprh3l" path="res://Sprites/UI/under_bar.png" id="2_g5v4w"]
 [ext_resource type="Texture2D" uid="uid://0e0pxmta2m3r" path="res://Sprites/UI/over_bar.png" id="3_3p8sl"]
 [ext_resource type="Texture2D" uid="uid://xm6f8dk7435t" path="res://Sprites/Furniture/clock.png" id="4_48ce2"]
 [ext_resource type="Texture2D" uid="uid://ce62ek6mgtoo0" path="res://Sprites/UIComputer/animation/desktop-sheet.png" id="6_c6tcn"]
+[ext_resource type="PackedScene" uid="uid://kuf8ciasqhfk" path="res://Scenes/UI/phone.tscn" id="6_nds6x"]
 [ext_resource type="Texture2D" uid="uid://lyrwdedm6pei" path="res://Sprites/UIComputer/work_icon.png" id="7_0bf5u"]
 [ext_resource type="FontFile" uid="uid://c5bl2x3fm6684" path="res://m3x6.ttf" id="8_0rcep"]
 [ext_resource type="Texture2D" uid="uid://6vem2u3jqolt" path="res://Sprites/UIComputer/work_exe_screen.png" id="8_xa2my"]
 [ext_resource type="Texture2D" uid="uid://cuhoix2x7c6er" path="res://Sprites/UI/progress_bar.png" id="9_5rjek"]
-[ext_resource type="Texture2D" uid="uid://dec3vw4ae1xle" path="res://Sprites/Furniture/phone.png" id="10_50mpe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4l2rv"]
 font = ExtResource("8_0rcep")
@@ -45,9 +45,6 @@ tracks/0/keys = {
 _data = {
 "phone_on": SubResource("Animation_8pbs3")
 }
-
-[sub_resource type="LabelSettings" id="LabelSettings_y6g5w"]
-font = ExtResource("8_0rcep")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ob8ki"]
 atlas = ExtResource("6_c6tcn")
@@ -212,7 +209,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HUD" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -342,23 +338,69 @@ libraries = {
 "": SubResource("AnimationLibrary_h1im7")
 }
 
-[node name="Sprite2D" type="Sprite2D" parent="HUD/Phone"]
-z_index = 2
-position = Vector2(591, 849)
-scale = Vector2(5, 5)
-texture = ExtResource("10_50mpe")
+[node name="Sprite2D" parent="HUD/Phone" instance=ExtResource("6_nds6x")]
 
-[node name="Label" type="Label" parent="HUD/Phone/Sprite2D"]
-offset_left = -18.0
-offset_top = -28.6
-offset_right = 22.0
-offset_bottom = 3.40001
-scale = Vector2(0.90967, 0.971301)
-text = "8:00
-"
-label_settings = SubResource("LabelSettings_y6g5w")
+[node name="PauseMargin" type="MarginContainer" parent="HUD"]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenu" type="ColorRect" parent="HUD/PauseMargin"]
+layout_mode = 2
+color = Color(0.227451, 0.266667, 0.4, 1)
+
+[node name="PauseMenuContents" type="VBoxContainer" parent="HUD/PauseMargin/PauseMenu"]
+layout_mode = 2
+offset_left = 441.0
+offset_top = 202.0
+offset_right = 710.0
+offset_bottom = 445.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/PauseMargin/PauseMenu/PauseMenuContents"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 18
+
+[node name="PauseMenuTitle" type="Label" parent="HUD/PauseMargin/PauseMenu/PauseMenuContents/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_0rcep")
+theme_override_font_sizes/font_size = 100
+text = "Pause Menu"
 horizontal_alignment = 1
-autowrap_mode = 3
+vertical_alignment = 1
+uppercase = true
+
+[node name="MarginContinueButton" type="MarginContainer" parent="HUD/PauseMargin/PauseMenu/PauseMenuContents"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ContinueButton" type="Button" parent="HUD/PauseMargin/PauseMenu/PauseMenuContents/MarginContinueButton"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_0rcep")
+theme_override_font_sizes/font_size = 70
+text = "Continuar"
+
+[node name="MarginExitButton" type="MarginContainer" parent="HUD/PauseMargin/PauseMenu/PauseMenuContents"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ExitButton" type="Button" parent="HUD/PauseMargin/PauseMenu/PauseMenuContents/MarginExitButton"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_0rcep")
+theme_override_font_sizes/font_size = 70
+text = "Salir"
 
 [node name="Window" type="Control" parent="HUD"]
 visible = false
@@ -369,11 +411,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -457.5
-offset_top = -295.0
+offset_top = -294.292
 offset_right = 457.5
-offset_bottom = 295.0
+offset_bottom = 294.292
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="ComputerDesk" type="AnimatedSprite2D" parent="HUD/Window"]
 scale = Vector2(5, 5)
@@ -395,7 +438,6 @@ theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
 [node name="Icons" type="HBoxContainer" parent="HUD/Window/IconsMargin"]
-visible = false
 layout_mode = 2
 
 [node name="WorkExe" type="Button" parent="HUD/Window/IconsMargin/Icons"]
@@ -473,67 +515,17 @@ nine_patch_stretch = true
 texture_under = ExtResource("9_5rjek")
 texture_progress = ExtResource("3_3p8sl")
 
-[node name="PauseMargin" type="MarginContainer" parent="HUD"]
-process_mode = 2
-visible = false
+[node name="TitleBar" type="Control" parent="HUD/Window"]
+custom_minimum_size = Vector2(900, 31.29)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -450.0
+offset_right = 450.0
+offset_bottom = 31.29
 grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PauseMenu" type="ColorRect" parent="HUD/PauseMargin"]
-layout_mode = 2
-color = Color(0.227451, 0.266667, 0.4, 1)
-
-[node name="PauseMenuContents" type="VBoxContainer" parent="HUD/PauseMargin/PauseMenu"]
-layout_mode = 2
-offset_left = 441.0
-offset_top = 202.0
-offset_right = 710.0
-offset_bottom = 445.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="MarginContainer" type="MarginContainer" parent="HUD/PauseMargin/PauseMenu/PauseMenuContents"]
-layout_mode = 2
-theme_override_constants/margin_bottom = 18
-
-[node name="PauseMenuTitle" type="Label" parent="HUD/PauseMargin/PauseMenu/PauseMenuContents/MarginContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_0rcep")
-theme_override_font_sizes/font_size = 100
-text = "Pause Menu"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="MarginContinueButton" type="MarginContainer" parent="HUD/PauseMargin/PauseMenu/PauseMenuContents"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="ContinueButton" type="Button" parent="HUD/PauseMargin/PauseMenu/PauseMenuContents/MarginContinueButton"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_0rcep")
-theme_override_font_sizes/font_size = 70
-text = "Continuar"
-
-[node name="MarginExitButton" type="MarginContainer" parent="HUD/PauseMargin/PauseMenu/PauseMenuContents"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="ExitButton" type="Button" parent="HUD/PauseMargin/PauseMenu/PauseMenuContents/MarginExitButton"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_0rcep")
-theme_override_font_sizes/font_size = 70
-text = "Salir"
+mouse_default_cursor_shape = 6
 
 [node name="MainMenu" type="Control" parent="."]
 process_mode = 2
@@ -608,10 +600,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_oualq")
 text = "Salir"
 flat = true
 
-[connection signal="animation_finished" from="HUD/Window/ComputerDesk" to="." method="_on_computer_desk_animation_finished"]
-[connection signal="pressed" from="HUD/Window/IconsMargin/Icons/WorkExe" to="." method="_on_work_exe_pressed"]
-[connection signal="text_changed" from="HUD/Window/WorkExeScreen/TextEditMargin/TextEdit" to="." method="_on_text_edit_text_changed"]
 [connection signal="pressed" from="HUD/PauseMargin/PauseMenu/PauseMenuContents/MarginContinueButton/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="HUD/PauseMargin/PauseMenu/PauseMenuContents/MarginExitButton/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="animation_finished" from="HUD/Window/ComputerDesk" to="." method="_on_computer_desk_animation_finished"]
+[connection signal="pressed" from="HUD/Window/IconsMargin/Icons/WorkExe" to="." method="_on_work_exe_pressed"]
+[connection signal="gui_input" from="HUD/Window/TitleBar" to="." method="_on_title_bar_gui_input"]
 [connection signal="pressed" from="MainMenu/Panel2/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="MainMenu/Panel3/ExitGame" to="." method="_on_exit_button_pressed"]

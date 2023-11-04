@@ -1332,7 +1332,6 @@ polygon = PackedVector2Array(-29.2, 21, -2.19995, -33.2, 22.6, -33.2, -3.99997, 
 [node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D2"]
 z_index = 1
 position = Vector2(-2.19998, -13)
-scale = Vector2(1, 1)
 texture = ExtResource("28_xy1fh")
 
 [node name="Sprite2D3" type="Sprite2D" parent="StaticBody2D2"]

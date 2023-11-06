@@ -1,15 +1,19 @@
-[gd_scene load_steps=42 format=3 uid="uid://otme5pyay7dk"]
+[gd_scene load_steps=49 format=3 uid="uid://otme5pyay7dk"]
 
 [ext_resource type="Script" path="res://Scenes/UI/UI.gd" id="1_mwmaw"]
 [ext_resource type="Texture2D" uid="uid://qtgm4duprh3l" path="res://Sprites/UI/under_bar.png" id="2_g5v4w"]
 [ext_resource type="Texture2D" uid="uid://0e0pxmta2m3r" path="res://Sprites/UI/over_bar.png" id="3_3p8sl"]
 [ext_resource type="Texture2D" uid="uid://xm6f8dk7435t" path="res://Sprites/Furniture/clock.png" id="4_48ce2"]
 [ext_resource type="Texture2D" uid="uid://ce62ek6mgtoo0" path="res://Sprites/UIComputer/animation/desktop-sheet.png" id="6_c6tcn"]
-[ext_resource type="PackedScene" uid="uid://kuf8ciasqhfk" path="res://Scenes/UI/phone.tscn" id="6_nds6x"]
 [ext_resource type="Texture2D" uid="uid://lyrwdedm6pei" path="res://Sprites/UIComputer/work_icon.png" id="7_0bf5u"]
 [ext_resource type="FontFile" uid="uid://c5bl2x3fm6684" path="res://m3x6.ttf" id="8_0rcep"]
 [ext_resource type="Texture2D" uid="uid://6vem2u3jqolt" path="res://Sprites/UIComputer/work_exe_screen.png" id="8_xa2my"]
 [ext_resource type="Texture2D" uid="uid://cuhoix2x7c6er" path="res://Sprites/UI/progress_bar.png" id="9_5rjek"]
+[ext_resource type="Script" path="res://Scenes/UI/ScrollContainer.gd" id="12_0yr3r"]
+[ext_resource type="Texture2D" uid="uid://dec3vw4ae1xle" path="res://Sprites/Furniture/phone.png" id="12_lag4m"]
+[ext_resource type="Texture2D" uid="uid://dr5of3yhq2jvl" path="res://Sprites/Furniture/phone_screnn_01.png" id="13_fkhi1"]
+[ext_resource type="Texture2D" uid="uid://cqx2lf5fmuvyp" path="res://Sprites/Furniture/phone_screnn_02.png" id="13_nf4db"]
+[ext_resource type="Texture2D" uid="uid://onfvqjo5rp8x" path="res://Sprites/aux_sprite/bottles1.png" id="15_vcve8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4l2rv"]
 font = ExtResource("8_0rcep")
@@ -19,32 +23,64 @@ font_size = 128
 font = ExtResource("8_0rcep")
 font_size = 64
 
+[sub_resource type="Animation" id="Animation_8pbs3"]
+resource_name = "phone_on"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PhoneScreen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(458, 650), Vector2(458, 247)]
+}
+
+[sub_resource type="Animation" id="Animation_4773p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PhoneScreen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(458, 650)]
+}
+
+[sub_resource type="Animation" id="Animation_qkn2c"]
+resource_name = "phone_off"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PhoneScreen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(458, 247), Vector2(458, 650)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h1im7"]
+_data = {
+"RESET": SubResource("Animation_4773p"),
+"phone_off": SubResource("Animation_qkn2c"),
+"phone_on": SubResource("Animation_8pbs3")
+}
+
 [sub_resource type="LabelSettings" id="LabelSettings_lumme"]
 font = ExtResource("8_0rcep")
 font_size = 112
 
 [sub_resource type="LabelSettings" id="LabelSettings_xsr25"]
 font_size = 18
-
-[sub_resource type="Animation" id="Animation_8pbs3"]
-resource_name = "phone_on"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Phone/Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(-0.1, 0, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(591, 849), Vector2(591, 849), Vector2(591, 362)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_h1im7"]
-_data = {
-"phone_on": SubResource("Animation_8pbs3")
-}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ob8ki"]
 atlas = ExtResource("6_c6tcn")
@@ -137,6 +173,8 @@ bg_color = Color(0.239216, 0.662745, 0.878431, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3vvx4"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dj4a5"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hixpu"]
 bg_color = Color(0, 0.584314, 0.913725, 0.478431)
 
@@ -209,12 +247,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HUD" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Phone" type="AnimationPlayer" parent="HUD"]
+libraries = {
+"": SubResource("AnimationLibrary_h1im7")
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="HUD"]
 layout_mode = 1
@@ -333,13 +377,6 @@ text = "Rest
 label_settings = SubResource("LabelSettings_xsr25")
 vertical_alignment = 1
 
-[node name="Phone" type="AnimationPlayer" parent="HUD"]
-libraries = {
-"": SubResource("AnimationLibrary_h1im7")
-}
-
-[node name="Sprite2D" parent="HUD/Phone" instance=ExtResource("6_nds6x")]
-
 [node name="PauseMargin" type="MarginContainer" parent="HUD"]
 process_mode = 2
 visible = false
@@ -438,6 +475,7 @@ theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
 [node name="Icons" type="HBoxContainer" parent="HUD/Window/IconsMargin"]
+visible = false
 layout_mode = 2
 
 [node name="WorkExe" type="Button" parent="HUD/Window/IconsMargin/Icons"]
@@ -473,7 +511,7 @@ grow_vertical = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 100
+theme_override_constants/margin_bottom = 130
 
 [node name="NotificationList" type="VBoxContainer" parent="HUD/Window/WorkExeScreen/TextEditMargin"]
 custom_minimum_size = Vector2(222.195, 0)
@@ -526,6 +564,83 @@ offset_right = 450.0
 offset_bottom = 31.29
 grow_horizontal = 2
 mouse_default_cursor_shape = 6
+
+[node name="PhoneScreen" type="Control" parent="HUD"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -118.0
+offset_top = 2.0
+offset_right = 116.999
+offset_bottom = 402.004
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.02173, 1.00027)
+
+[node name="PhoneSprite" type="Sprite2D" parent="HUD/PhoneScreen"]
+z_index = 1
+material = SubResource("CanvasItemMaterial_dj4a5")
+position = Vector2(117.448, 199.947)
+scale = Vector2(4.89367, 4.99866)
+texture = ExtResource("12_lag4m")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/PhoneScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 45
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 60
+
+[node name="Control" type="Control" parent="HUD/PhoneScreen/MarginContainer"]
+clip_contents = true
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HUD/PhoneScreen/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.46838
+offset_top = -1.01172
+offset_right = 4.46838
+offset_bottom = -1.01172
+grow_horizontal = 2
+grow_vertical = 2
+scroll_vertical = 300
+scroll_vertical_custom_step = 100.0
+horizontal_scroll_mode = 0
+script = ExtResource("12_0yr3r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/PhoneScreen/MarginContainer/Control/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="HUD/PhoneScreen/MarginContainer/Control/ScrollContainer/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+texture = ExtResource("13_fkhi1")
+expand_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="HUD/PhoneScreen/MarginContainer/Control/ScrollContainer/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+texture = ExtResource("13_nf4db")
+expand_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="HUD/PhoneScreen/MarginContainer/Control/ScrollContainer/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+texture = ExtResource("15_vcve8")
+expand_mode = 5
 
 [node name="MainMenu" type="Control" parent="."]
 process_mode = 2

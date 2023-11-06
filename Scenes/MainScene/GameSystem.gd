@@ -28,6 +28,7 @@ var computer_on: bool = false
 var job_on: bool = true
 
 var random = RandomNumberGenerator.new()
+var tik_tok_event = false
 
 func _ready():
 	get_tree().paused = true
@@ -57,6 +58,10 @@ func _on_tick(ticks: int):
 
 	if rest_status <= 0 && health_status > 0:
 		health_status = clamp(health_status - 5, 0, 100)
+		
+	if ticks % random.randi_range(1, 100) == 0 && !tik_tok_event:
+		tik_tok_event = true
+		Events.tiktok_event.emit(true)
 
 func sleep():
 	player.hide()

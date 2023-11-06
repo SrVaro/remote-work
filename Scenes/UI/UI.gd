@@ -12,6 +12,7 @@ extends CanvasLayer
 @onready var computer_desk = $HUD/Window/ComputerDesk
 @onready var phone = $HUD/Phone
 
+
 @onready var job_status = $HUD/MarginContainer/VBoxContainer4/VBoxContainer/JobStatus
 func set_job(value: int):
 	job_status.value = value
@@ -51,20 +52,12 @@ var dragging_start_position = Vector2()
 
 func _ready():
 	Events.day_passed.connect(_day_passed)
-	
+	Events.tiktok_event.connect(_toggle_phone)
 
 
 func _process(_delta):
 	if following:
 		window.set_global_position(get_viewport().get_mouse_position())
-	
-func initialize_UI():
-	#hud.hide()
-	#pause_margin.hide()
-	#work_exe_screen.hide()
-	#icons.hide()
-	#window.hide()
-	pass
 	
 func start_game():
 	toggle_main_menu()
@@ -87,6 +80,12 @@ func _remove_first_notification() -> void:
 		
 func _day_passed(value: String):
 	day_of_the_week_label.text = value
+	
+func _toggle_phone(value: bool):
+	if value:
+		phone.play("phone_on")
+	else: 
+		phone.play("phone_off")
 	
 func _set_transition_text(text: String):
 	day_description.text = text
@@ -166,10 +165,6 @@ func _on_exit_button_pressed():
 
 func _on_new_game_pressed():
 	GameSystem.start_game()
-	
-func show_phone():
-	phone.play("phone_on")
-
 
 func _on_title_bar_gui_input(event):
 	print(event)

@@ -183,7 +183,6 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_8vitq")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_m0qt8")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_3vvx4")
-text = "dsafasdfasdfasdf"
 context_menu_enabled = false
 shortcut_keys_enabled = false
 selecting_enabled = false

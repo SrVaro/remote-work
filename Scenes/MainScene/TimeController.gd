@@ -53,6 +53,10 @@ func day_passed():
 	day_of_week += 1
 	Events.day_passed.emit(days_of_week_enum[day_of_week])
 	
+func reset_time():
+	var day_of_week = 0
+	Events.day_passed.emit(days_of_week_enum[day_of_week])
+	
 func reset_lights():
 	night_mode = false
 	get_tree().call_group("Lights","toggle_lights")

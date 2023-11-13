@@ -5,12 +5,19 @@ extends CanvasLayer
 @onready var notification_list = $HUD/Window/WorkExeScreen/TextEditMargin/NotificationList
 
 @onready var hud = $HUD
+func set_hud(isVisible: bool):
+	hud.visible = isVisible
+	
+@onready var main_menu = $MainMenu
+func set_main_menu(isVisible: bool):
+	main_menu.visible = isVisible
+	
 @onready var sleep_transition = $SleepTransition
 @onready var day_description = $SleepTransition/VBoxContainer/DayDescription
 @onready var day_of_the_week_label = $SleepTransition/VBoxContainer/DayOfTheWeekLabel
 
 @onready var computer_desk = $HUD/Window/ComputerDesk
-@onready var phone = $HUD/Phone
+@onready var phone_animation_player = $HUD/PhoneAnimationPlayer
 
 
 @onready var job_status = $HUD/MarginContainer/VBoxContainer4/VBoxContainer/JobStatus
@@ -32,14 +39,19 @@ func get_rest():
 	return rest.value
 
 
-
 @onready var icons = $HUD/Window/IconsMargin/Icons
 @onready var work_exe_screen = $HUD/Window/WorkExeScreen
 @onready var window = $HUD/Window
 
-@onready var pause_margin = $HUD/PauseMargin
-
-@onready var main_menu = $MainMenu
+@onready var pause_margin = $PauseMargin
+func set_pause_game(value: bool):
+	pause_margin.visible = value
+func get_pause_game():
+	return pause_margin.visible
+	
+@onready var game_over_margin = $GameOverMargin
+func set_game_over(value: bool):
+	game_over_margin.visible = value
 
 var transition_running: bool = false
 
@@ -54,16 +66,10 @@ func _ready():
 	Events.day_passed.connect(_day_passed)
 	Events.tiktok_event.connect(_toggle_phone)
 
-
 func _process(_delta):
 	if following:
 		window.set_global_position(get_viewport().get_mouse_position())
 	
-func start_game():
-	toggle_main_menu()
-	hud.show()
-	_set_transition_text("")
-
 func _add_notification(notification) -> void:
 	if(notification):
 		notification_list.add_child(notification)
@@ -83,9 +89,9 @@ func _day_passed(value: String):
 	
 func _toggle_phone(value: bool):
 	if value:
-		phone.play("phone_on")
+		phone_animation_player.play("phone_on")
 	else: 
-		phone.play("phone_off")
+		phone_animation_player.play("phone_off")
 	
 func _set_transition_text(text: String):
 	day_description.text = text
@@ -132,6 +138,12 @@ func computer_toggle(computer_on: bool):
 		work_exe_screen.hide()
 		icons.hide()
 
+func _on_continue_button_pressed():
+	GameSystem.toggle_pause_game()
+
+func _on_new_game_button_pressed():
+	GameSystem.reset_game()
+
 func _on_computer_desk_animation_finished():
 	icons.show()
 	
@@ -141,30 +153,13 @@ func _on_work_exe_pressed():
 func _on_window_close_requested():
 	GameSystem.toggle_computer_mode()
 	
-func toggle_pause_game(with_menu: bool):
-	get_tree().paused = !get_tree().paused
-	if with_menu:
-		pause_margin.visible = !pause_margin.visible
-
-func _input(event):
-	if event.is_action_pressed("pause_menu"):
-		toggle_pause_game(true)
-	
-func disable_main_menu():
-	main_menu.get_node("Panel2/NewGame").disabled = !main_menu.get_node("Panel2/NewGame").disabled
-	main_menu.get_node("Panel3/ExitGame").disabled = !main_menu.get_node("Panel3/ExitGame").disabled
-	
-func toggle_main_menu():
-	main_menu.visible = !main_menu.visible
-
-func _on_continue_button_pressed():
-	toggle_pause_game(true)
-
 func _on_exit_button_pressed():
 	get_tree().quit()
 
 func _on_new_game_pressed():
-	GameSystem.start_game()
+	main_menu.get_node("Panel2/NewGame").disabled = !main_menu.get_node("Panel2/NewGame").disabled
+	main_menu.get_node("Panel3/ExitGame").disabled = !main_menu.get_node("Panel3/ExitGame").disabled
+	GameSystem.reset_day()
 
 func _on_title_bar_gui_input(event):
 	print(event)
@@ -176,3 +171,6 @@ func _on_title_bar_gui_input(event):
 func _on_CloseButton_pressed():
 	get_tree().quit()
 	
+
+
+

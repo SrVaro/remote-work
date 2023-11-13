@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://qpapt6amjcee"]
+[gd_scene load_steps=8 format=3 uid="uid://qpapt6amjcee"]
 
 [ext_resource type="Texture2D" uid="uid://c17scm6vabylr" path="res://Sprites/UI/notification.png" id="1_j8gar"]
 [ext_resource type="Script" path="res://Scenes/Notifications/Notification.gd" id="2_w20ob"]
@@ -7,9 +7,16 @@
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dfnmc"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_530xb"]
+[sub_resource type="LabelSettings" id="LabelSettings_4a10b"]
+line_spacing = -12.0
 font = ExtResource("4_53kn0")
 font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_06mai"]
+line_spacing = -12.0
+font = ExtResource("4_53kn0")
+font_size = 32
+font_color = Color(0.14902, 0.168627, 0.266667, 1)
 
 [node name="Notification" type="TextureRect"]
 material = SubResource("CanvasItemMaterial_dfnmc")
@@ -19,22 +26,51 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.999328, 1)
+scale = Vector2(5, 5)
 texture = ExtResource("1_j8gar")
 expand_mode = 5
 script = ExtResource("2_w20ob")
 
-[node name="Label" type="Label" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "TIENES TRABAJO CABRON!"
-label_settings = SubResource("LabelSettings_530xb")
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 10
+
+[node name="Control" type="Control" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 59.05)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Title" type="Label" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "TITULO:
+Reimplementar motor grafico en vulkan y blabla bla bla"
+label_settings = SubResource("LabelSettings_4a10b")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="StoryPoints" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "STORY POINTS: 1"
+label_settings = SubResource("LabelSettings_06mai")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 15.0
@@ -46,10 +82,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = -2.0
-offset_right = -0.000762939
-offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 nine_patch_stretch = true

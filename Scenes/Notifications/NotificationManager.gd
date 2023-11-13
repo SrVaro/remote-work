@@ -14,8 +14,9 @@ func _ready():
 	pass # Replace with function body.
 
 
-func _add_notification_to_queue():
+func _add_notification_to_queue(level: int):
 	var notification_instance = notification_scene.instantiate()
+	notification_instance.task_level = level
 	notification_instance.connect("notification_timeout_expired", _notification_timeout_expired)
 	notificationList.append(notification_instance)
 	UI._add_notification(notification_instance)
@@ -29,6 +30,9 @@ func _remove_first_notification() -> void:
 	if notificationList.size() != 0:
 		notificationList.remove_at(0)
 		UI._remove_first_notification()
+		
+func _get_first_notification() -> Notification:
+	return notificationList[0]
 		
 func _is_notification_list_empty():
 	return notificationList.size() == 0

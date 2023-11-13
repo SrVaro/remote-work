@@ -5,12 +5,15 @@
 [ext_resource type="Script" path="res://Scenes/MainScene/TimeController.gd" id="3_bnmm0"]
 
 [node name="GameController" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_mq671")
 
 [node name="TickSystem" type="Node2D" parent="."]
+process_mode = 1
 script = ExtResource("2_qqpvn")
 
 [node name="TickTimer" type="Timer" parent="TickSystem"]
+wait_time = 0.25
 autostart = true
 
 [node name="TimeController" type="Node2D" parent="."]

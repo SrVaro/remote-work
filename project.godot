@@ -22,6 +22,10 @@ NotificationManager="*res://Scenes/Notifications/NotificationManager.gd"
 Events="*res://Scenes/EventBus/Events.gd"
 GameSystem="*res://Scenes/MainScene/GameController.tscn"
 
+[debug]
+
+shapes/size/mode=0
+
 [display]
 
 window/size/always_on_top=true

@@ -1,6 +1,7 @@
 extends ScrollContainer
 
 @export var delta_for_swipe := Vector2(8, 8) 
+@onready var control = $".."
 
 var look_for_swipe := false
 var swiping := false
@@ -11,6 +12,7 @@ var swipe_mouse_positions := []
 var vertical_drag_threshold = 10
 
 var next_tiktok = 275
+var tiktoks_passed = 1
 
 
 func _ready():
@@ -25,8 +27,8 @@ func _input(ev) -> void:
 		return
 		
 	if ev is InputEventMouseButton:
-		
-		if ev.pressed and get_global_rect().has_point(ev.global_position):
+
+		if ev.pressed and get_global_rect().has_point(ev.position):
 			look_for_swipe = true
 			swipe_mouse_start = ev.global_position
 			
@@ -82,8 +84,18 @@ func _input(ev) -> void:
 			
 			if get_v_scroll_bar().value >= next_tiktok:
 				next_tiktok += 300
-				Events.tiktok_passed.emit()
+
+				tiktoks_passed += 1
+				if tiktoks_passed >= 3:
+					Events.tiktok_event.emit(false)
+					tiktoks_passed = 1
 				
 			swipe_mouse_times.append(Time.get_ticks_msec())
 			swipe_mouse_positions.append(ev.global_position)
 			ev.position = Vector2.ZERO
+
+
+func _on_phone_animation_player_animation_finished(anim_name):
+	swipe_start.y = 0
+	set_v_scroll(0)
+	next_tiktok = 275

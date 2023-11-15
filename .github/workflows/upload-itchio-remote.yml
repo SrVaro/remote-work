@@ -39,6 +39,6 @@ jobs:
         with:
           working-directory: html5
           api-key: ${{ secrets.ITCHIO_API_KEY }}
-          user: simondalvai
-          game: ball2box
+          user: varoxolotl
+          game: remote-work
           channel: html5

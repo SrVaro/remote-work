@@ -1,12 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxynbkdveh5b5"]
+[gd_scene load_steps=14 format=3 uid="uid://bxynbkdveh5b5"]
 
 [ext_resource type="Texture2D" uid="uid://c540j1o1bohj5" path="res://Sprites/Furniture/bed.png" id="1_papsb"]
 [ext_resource type="Script" path="res://Scenes/Furniture/Bed.gd" id="1_s2am4"]
 [ext_resource type="Texture2D" uid="uid://bikfnx1l6rhfq" path="res://Sprites/Furniture/animations/bed_player_spritesheet.png" id="3_wvyfr"]
 [ext_resource type="Script" path="res://Scenes/Interactions/InteractionArea.gd" id="4_0vdq0"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldrmc"]
-size = Vector2(59.6, 22.6)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nh5dt"]
 atlas = ExtResource("3_wvyfr")
@@ -77,10 +74,6 @@ position = Vector2(160, 554)
 scale = Vector2(5, 5)
 script = ExtResource("1_s2am4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.199997, 2.3)
-shape = SubResource("RectangleShape2D_ldrmc")
-
 [node name="Bed" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_itasa")
 animation = &"bed_player"
@@ -99,6 +92,9 @@ script = ExtResource("4_0vdq0")
 position = Vector2(2.8, 4.4)
 scale = Vector2(1.99633, 0.897735)
 shape = SubResource("CircleShape2D_yooyb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-24, -10.8, -17.2, -10.8, -12, -10, -1.2, -10, 18, -7, 29, -7, 29, 1, 23, 12, -31, 12, -31, 3)
 
 [connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]

@@ -9,4 +9,16 @@
 
 [node name="Player" parent="." instance=ExtResource("2_6gn40")]
 visible = false
-position = Vector2(233, 470)
+position = Vector2(251, 464)
+
+[node name="Player" parent="Player" instance=ExtResource("2_6gn40")]
+visible = false
+position = Vector2(251, 464)
+
+[node name="Player" parent="Player/Player" instance=ExtResource("2_6gn40")]
+visible = false
+position = Vector2(251, 464)
+
+[node name="Player" parent="Player/Player/Player" instance=ExtResource("2_6gn40")]
+visible = false
+position = Vector2(251, 464)

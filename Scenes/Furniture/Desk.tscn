@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://32nfd07ux7ea" path="res://Sprites/Furniture/lamp_light.png" id="9_hs4hh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rseg4"]
-size = Vector2(44, 25.8)
+size = Vector2(46, 26)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f2e16"]
 animations = [{
@@ -111,7 +111,7 @@ animations = [{
 scale = Vector2(5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.600001, 1.9)
+position = Vector2(1.6, 2)
 shape = SubResource("RectangleShape2D_rseg4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

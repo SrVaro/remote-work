@@ -43,6 +43,10 @@ func get_rest():
 @onready var work_exe_screen = $HUD/Window/WorkExeScreen
 @onready var window = $HUD/Window
 
+@onready var clock_hand_mins = $HUD/MarginContainer/VBoxContainer3/HBoxClock/ClockRect/ClockHandMins
+@onready var clock_hand_hours = $HUD/MarginContainer/VBoxContainer3/HBoxClock/ClockRect/ClockHandHours
+
+
 @onready var pause_margin = $PauseMargin
 func set_pause_game(value: bool):
 	pause_margin.visible = value
@@ -122,8 +126,10 @@ func fade_transition(type: String, wait_sec: float):
 			
 	await get_tree().create_timer(wait_sec).timeout
 		
-func set_time(minutes: int, seconds: int):
-	var day_format_string:String = "%02d:%02d" % [minutes, seconds]
+func set_time(hours: int, minutes: int):
+	var day_format_string:String = "%02d:%02d" % [hours, minutes]
+	clock_hand_hours.rotation_degrees = hours * 30
+	clock_hand_mins.rotation_degrees = (minutes /10) * 60
 
 	time_of_day.text = day_format_string
 	
@@ -171,6 +177,7 @@ func _on_title_bar_gui_input(event):
 func _on_CloseButton_pressed():
 	get_tree().quit()
 	
+
 
 
 

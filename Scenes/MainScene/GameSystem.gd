@@ -63,9 +63,6 @@ func reset_game():
 	level_manager.load_next_level()
 	game_started = false
 	await UI.fade_transition("fade_in", 2.5)
-	rest_status = 100
-	job_status = 100
-	health_status = 100
 	UI.set_game_over(false)
 	time_controller.reset_lights()
 	player.global_position = level_manager.get_actual_level_spawn()

@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var player = get_tree().get_first_node_in_group("Player")
-@onready var label = $Label
+@onready var panel = $Panel
 
 const base_text = "Pulsa [E] para "
 
@@ -22,16 +22,16 @@ func _process(_delta):
 	if active_areas.size() > 0 && can_interact && active_areas[0].available:
 		active_areas.sort_custom(_sort_by_distance_to_player)
 		if active_areas[0].action_name == "any_button":
-			label.text = "¡Pulsa cualquier boton del teclado!"
+			panel.get_node("Label").text = "¡Pulsa cualquier boton del teclado!"
 		else:
-			label.text = base_text + "interectuar"
+			panel.get_node("Label").text = base_text + "interectuar"
 			
-		label.global_position = active_areas[0].global_position
-		label.global_position.y -= 36
-		label.global_position.x -= label.size.x / 2
-		label.show()
+		panel.global_position = active_areas[0].global_position
+		panel.global_position.y -= 36
+		panel.global_position.x -= panel.size.x / 2
+		panel.show()
 	else:
-		label.hide()
+		panel.hide()
 		
 
 func _sort_by_distance_to_player(area1, area2):
@@ -43,7 +43,7 @@ func _input(event):
 	if active_areas.size() > 0 && event.is_action_pressed(active_areas[0].action_name) && can_interact:
 		if active_areas.size() > 0:
 			can_interact = false
-			label.hide()
+			panel.hide()
 			
 			await active_areas[0].interact.call()
 			

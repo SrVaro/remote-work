@@ -8,6 +8,8 @@ extends Node2D
 
 @onready var notification_alert = $NotificationAlert
 
+var last_key: String
+
 var code_example = [
 	"struct group_info *groups_alloc(int gidsetsize)",
 	"	{",
@@ -61,6 +63,7 @@ var tiktoks_passed = 1
 func _ready():
 	interaction_area.interact = Callable(self, "_trigger_computer")
 	text_edit.text_changed.connect(_on_text_edit_text_changed)
+	text_edit.visibility_changed.connect(_on_text_edit_visibility_changed)
 	Events.tiktok_event.connect(_on_tiktok_event)
 	progressBar = text_edit.get_node("../../ProgressBar")
 	random.randomize()
@@ -76,7 +79,12 @@ func _trigger_computer():
 	text_edit.text = ""
 	text_upd_counter = 0
 
+func _on_text_edit_visibility_changed():
+	text_edit.grab_focus()
+
 func _on_text_edit_text_changed():
+	last_key = text_edit.get_line(text_edit.get_line_count() -1).strip_edges(true,true)[0]
+	text_edit.editable = false
 	text_edit.remove_text(text_upd_counter, 0, text_upd_counter, 1)
 	text_upd_counter += 1
 	if !NotificationManager._is_notification_list_empty():
@@ -90,6 +98,8 @@ func _on_text_edit_text_changed():
 			progressBar.value = 0
 			computer.play("default")
 	text_edit.insert_text_at_caret(code_example[random.randi_range(0, 30)] + "\n", 0)
+	await get_tree().create_timer(0.1).timeout
+	text_edit.editable = true
 
 	
 func _on_tiktok_event(value: bool):

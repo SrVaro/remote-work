@@ -30,6 +30,7 @@ func _trigger_coffe_machine():
 func _coffe_drinked():
 	if(coffeeList.size() > 0):
 		coffeeList[coffeeList.size()-1].queue_free()
+		coffeeList.remove_at(coffeeList.size()-1)
 		GameSystem.rest_status += 20
 
 func _on_coffee_timer_timeout():

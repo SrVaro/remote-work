@@ -13,7 +13,6 @@ process_mode = 1
 script = ExtResource("2_qqpvn")
 
 [node name="TickTimer" type="Timer" parent="TickSystem"]
-wait_time = 0.25
 autostart = true
 
 [node name="TimeController" type="Node2D" parent="."]

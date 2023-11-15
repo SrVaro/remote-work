@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://otme5pyay7dk"]
+[gd_scene load_steps=51 format=3 uid="uid://otme5pyay7dk"]
 
 [ext_resource type="Script" path="res://Scenes/UI/UI.gd" id="1_mwmaw"]
 [ext_resource type="Texture2D" uid="uid://qtgm4duprh3l" path="res://Sprites/UI/under_bar.png" id="2_g5v4w"]
@@ -9,6 +9,8 @@
 [ext_resource type="FontFile" uid="uid://c5bl2x3fm6684" path="res://m3x6.ttf" id="8_0rcep"]
 [ext_resource type="Texture2D" uid="uid://6vem2u3jqolt" path="res://Sprites/UIComputer/work_exe_screen.png" id="8_xa2my"]
 [ext_resource type="Texture2D" uid="uid://cuhoix2x7c6er" path="res://Sprites/UI/progress_bar.png" id="9_5rjek"]
+[ext_resource type="Texture2D" uid="uid://bkxi4tvxnks7q" path="res://Sprites/Furniture/manecilla_grande.png" id="9_sql50"]
+[ext_resource type="Texture2D" uid="uid://caqvde3e4rrpb" path="res://Sprites/Furniture/manecilla_pequeña.png" id="10_5hajw"]
 [ext_resource type="Script" path="res://Scenes/UI/ScrollContainer.gd" id="12_0yr3r"]
 [ext_resource type="Texture2D" uid="uid://dec3vw4ae1xle" path="res://Sprites/Furniture/phone.png" id="12_lag4m"]
 [ext_resource type="Texture2D" uid="uid://dr5of3yhq2jvl" path="res://Sprites/Furniture/phone_screnn_01.png" id="13_fkhi1"]
@@ -377,10 +379,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 457.883
-offset_top = 666.0
-offset_right = 694.118
-offset_bottom = 1066.0
+offset_left = -118.117
+offset_top = 18.0
+offset_right = 118.118
+offset_bottom = 418.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1.02173, 1.00027)
@@ -478,7 +480,29 @@ layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("4_48ce2")
 
+[node name="ClockHandMins" type="TextureRect" parent="HUD/MarginContainer/VBoxContainer3/HBoxClock/ClockRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(75, 75)
+texture = ExtResource("9_sql50")
+
+[node name="ClockHandHours" type="TextureRect" parent="HUD/MarginContainer/VBoxContainer3/HBoxClock/ClockRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 4.18879
+pivot_offset = Vector2(75, 75)
+texture = ExtResource("10_5hajw")
+
 [node name="TimeOfDay" type="Label" parent="HUD/MarginContainer/VBoxContainer3/HBoxClock"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 1
 text = "08:00
@@ -650,9 +674,11 @@ theme_override_constants/separation = 0
 
 [node name="TextEdit" type="TextEdit" parent="HUD/Window/WorkExeScreen/TextEditMargin"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/font_color = Color(0.388235, 0.780392, 0.301961, 1)
+theme_override_colors/font_readonly_color = Color(0.388235, 0.780392, 0.301961, 1)
 theme_override_fonts/font = ExtResource("8_0rcep")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxEmpty_8vitq")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_m0qt8")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_3vvx4")
@@ -663,7 +689,6 @@ deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 middle_mouse_paste_enabled = false
 wrap_mode = 1
-caret_blink = true
 
 [node name="ProgressBar" type="TextureProgressBar" parent="HUD/Window/WorkExeScreen"]
 custom_minimum_size = Vector2(0, 39.7)

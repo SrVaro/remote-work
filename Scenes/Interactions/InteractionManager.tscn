@@ -11,13 +11,25 @@ font_size = 48
 z_index = 20
 script = ExtResource("1_q7o6t")
 
-[node name="Label" type="Label" parent="."]
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(346.925, 20)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -62.5
-offset_right = 62.5
-offset_bottom = 26.0
+offset_left = -181.215
+offset_right = 165.71
+offset_bottom = 36.71
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -167.247
+offset_top = -5.0
+offset_right = 168.753
+offset_bottom = 36.0
 grow_horizontal = 2
 text = "PUSH ANY BOTTON TO INTERACT"
 label_settings = SubResource("LabelSettings_simq3")

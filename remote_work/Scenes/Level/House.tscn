@@ -1063,7 +1063,7 @@ z_index = 1
 position = Vector2(304, 202)
 
 [node name="Bed" parent="." instance=ExtResource("6_0esmj")]
-position = Vector2(145, 538)
+position = Vector2(148, 533)
 
 [node name="Calendar" type="Sprite2D" parent="."]
 position = Vector2(221, 82)
@@ -1369,7 +1369,7 @@ scale = Vector2(5, 5)
 texture = ExtResource("20_4f8aq")
 
 [node name="NightStand" type="Node2D" parent="."]
-position = Vector2(364, 598)
+position = Vector2(364, 593)
 
 [node name="Sprite2D" type="Sprite2D" parent="NightStand"]
 scale = Vector2(5, 5)

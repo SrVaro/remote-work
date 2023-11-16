@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var time_of_day = $HUD/MarginContainer/VBoxContainer3/HBoxClock/TimeOfDay
 
-@onready var notification_list = $HUD/Window/WorkExeScreen/TextEditMargin/NotificationList
+@onready var notification_list = $HUD/WorkExeScreen/WorkExeScreen/TextEditMargin/NotificationList
 
 @onready var hud = $HUD
 func set_hud(isVisible: bool):
@@ -40,8 +40,10 @@ func get_rest():
 
 
 @onready var icons = $HUD/Window/IconsMargin/Icons
-@onready var work_exe_screen = $HUD/Window/WorkExeScreen
+@onready var work_exe_screen = $HUD/WorkExeScreen
 @onready var window = $HUD/Window
+
+var follow_target
 
 @onready var clock_hand_mins = $HUD/MarginContainer/VBoxContainer3/HBoxClock/ClockRect/ClockHandMins
 @onready var clock_hand_hours = $HUD/MarginContainer/VBoxContainer3/HBoxClock/ClockRect/ClockHandHours
@@ -72,7 +74,8 @@ func _ready():
 
 func _process(_delta):
 	if following:
-		window.set_global_position(get_viewport().get_mouse_position())
+		follow_target.move_to_front()
+		follow_target.set_global_position(get_viewport().get_mouse_position())
 	
 func _add_notification(notification) -> void:
 	if(notification):
@@ -165,19 +168,32 @@ func _on_exit_button_pressed():
 func _on_new_game_pressed():
 	main_menu.get_node("Panel2/NewGame").disabled = !main_menu.get_node("Panel2/NewGame").disabled
 	main_menu.get_node("Panel3/ExitGame").disabled = !main_menu.get_node("Panel3/ExitGame").disabled
-	GameSystem.reset_day()
+	GameSystem.start_game()
 
 func _on_title_bar_gui_input(event):
-	print(event)
 	if event is InputEventMouseButton:
 		if event.get_button_index() == 1:
 			following = !following
+			follow_target = window
 			dragging_start_position = get_viewport().get_mouse_position()
+		
+func _on_title_bar_2_gui_input(event):
+	if event is InputEventMouseButton:
+			if event.get_button_index() == 1:
+				following = !following
+				follow_target = work_exe_screen
+				dragging_start_position = get_viewport().get_mouse_position()
 
 func _on_CloseButton_pressed():
 	get_tree().quit()
-	
 
+func _on_work_exe_screen_area_gui_input(event):
+	if event is InputEventMouseButton:
+			if event.get_button_index() == 1:
+				work_exe_screen.move_to_front()
 
-
+func _on_icons_gui_input(event):
+	if event is InputEventMouseButton:
+			if event.get_button_index() == 1:
+				window.move_to_front()
 

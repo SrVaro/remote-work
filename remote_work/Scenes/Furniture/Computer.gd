@@ -4,7 +4,7 @@ extends Node2D
 @onready var progressBar
 @onready var particleSystem = $GPUParticles2D
 @onready var computer = $Computer
-@onready var text_edit = get_node("/root/UI/HUD/Window/WorkExeScreen/TextEditMargin/TextEdit")
+@onready var text_edit = get_node("/root/UI/HUD/WorkExeScreen/WorkExeScreen/TextEditMargin/TextEdit")
 
 @onready var notification_alert = $NotificationAlert
 

@@ -132,13 +132,14 @@ sprite_frames = SubResource("SpriteFrames_8wmhg")
 frame_progress = 0.697435
 
 [node name="InteractionArea" type="Area2D" parent="Computer"]
-position = Vector2(-7.2, -13.4)
+position = Vector2(1, -13.4)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("5_x0rr4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Computer/InteractionArea"]
-position = Vector2(-0.6, 24.4)
+position = Vector2(-8.8, 24.4)
+scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_ag6ag")
 
 [node name="NotificationAlert" type="AnimatedSprite2D" parent="Computer"]

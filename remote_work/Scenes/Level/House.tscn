@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://dvbh222xl50hr"]
+[gd_scene load_steps=81 format=3 uid="uid://dvbh222xl50hr"]
 
 [ext_resource type="Texture2D" uid="uid://yuic70pimg6s" path="res://Sprites/TileSets/floor.png" id="2_rf2pa"]
 [ext_resource type="Texture2D" uid="uid://df32kgqo5cs2e" path="res://Sprites/TileSets/window.png" id="3_18r4u"]
@@ -1017,6 +1017,13 @@ polygon = PackedVector2Array(-24, 8, -21, 8, -20.8, 20, -19, 20, -19, 19, -18, 1
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6ad0f"]
 polygon = PackedVector2Array(-29, 21, -29, 23, -28, 23, -28, 35, -8.60001, 35, 20.8, -22.2, 20.8, -33, -2, -33)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3mr8l"]
+bg_color = Color(0.0705882, 0.305882, 0.537255, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_l1lyf"]
+font = ExtResource("8_xsena")
+font_size = 32
+
 [node name="House" type="Node2D"]
 position = Vector2(33, 48)
 metadata/_edit_horizontal_guides_ = [-113.0]
@@ -1445,6 +1452,187 @@ occluder = SubResource("OccluderPolygon2D_6ad0f")
 
 [node name="SpawnPoint" type="Node2D" parent="."]
 position = Vector2(242, 412)
+
+[node name="Tutorials" type="Node" parent="."]
+
+[node name="CoffeTutorial" type="Panel" parent="Tutorials"]
+visible = false
+z_index = 4
+custom_minimum_size = Vector2(234.95, 91.555)
+offset_left = 549.0
+offset_top = 313.0
+offset_right = 783.95
+offset_bottom = 404.555
+theme_override_styles/panel = SubResource("StyleBoxFlat_3mr8l")
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorials/CoffeTutorial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="Tutorials/CoffeTutorial/MarginContainer"]
+custom_minimum_size = Vector2(159.805, 0)
+layout_mode = 2
+text = "Puedes ir a la cocina para hacerte un cafe y poder aguantar todo el dia"
+label_settings = SubResource("LabelSettings_l1lyf")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="WorkTutorial" type="Panel" parent="Tutorials"]
+visible = false
+z_index = 4
+custom_minimum_size = Vector2(186.085, 58.42)
+offset_left = 477.0
+offset_top = 122.0
+offset_right = 663.085
+offset_bottom = 180.42
+theme_override_styles/panel = SubResource("StyleBoxFlat_3mr8l")
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorials/WorkTutorial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="Tutorials/WorkTutorial/MarginContainer"]
+custom_minimum_size = Vector2(159.805, 0)
+layout_mode = 2
+text = "¡Corre! Tienes una tarea pendiente"
+label_settings = SubResource("LabelSettings_l1lyf")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="MovementTutorial" type="Panel" parent="Tutorials"]
+visible = false
+z_index = 4
+custom_minimum_size = Vector2(186.085, 58.42)
+offset_left = 327.0
+offset_top = 458.0
+offset_right = 513.085
+offset_bottom = 516.42
+theme_override_styles/panel = SubResource("StyleBoxFlat_3mr8l")
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorials/MovementTutorial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="Tutorials/MovementTutorial/MarginContainer"]
+custom_minimum_size = Vector2(159.805, 0)
+layout_mode = 2
+text = "Usa las flechas del teclado para moverte"
+label_settings = SubResource("LabelSettings_l1lyf")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="TikTokTutorial" type="Panel" parent="Tutorials"]
+visible = false
+z_index = 4
+custom_minimum_size = Vector2(186.085, 119.515)
+offset_left = -28.0
+offset_top = 402.0
+offset_right = 158.085
+offset_bottom = 521.515
+theme_override_styles/panel = SubResource("StyleBoxFlat_3mr8l")
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorials/TikTokTutorial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="Tutorials/TikTokTutorial/MarginContainer"]
+custom_minimum_size = Vector2(159.805, 0)
+layout_mode = 2
+text = "!Desliza los tik toks en tu movil hasta poder seguir con el dia!"
+label_settings = SubResource("LabelSettings_l1lyf")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="WorkTutorial2" type="Panel" parent="Tutorials"]
+visible = false
+z_index = 4
+custom_minimum_size = Vector2(186.085, 92.235)
+offset_left = 477.0
+offset_top = 122.0
+offset_right = 663.085
+offset_bottom = 180.42
+theme_override_styles/panel = SubResource("StyleBoxFlat_3mr8l")
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorials/WorkTutorial2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="Tutorials/WorkTutorial2/MarginContainer"]
+custom_minimum_size = Vector2(159.805, 0)
+layout_mode = 2
+text = "!Cuidado! Hoy aparecen tareas mas complejas"
+label_settings = SubResource("LabelSettings_l1lyf")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="JobFinishTutorial" type="Panel" parent="Tutorials"]
+z_index = 4
+custom_minimum_size = Vector2(186.085, 86.745)
+offset_left = 477.0
+offset_top = 186.0
+offset_right = 663.085
+offset_bottom = 272.745
+theme_override_styles/panel = SubResource("StyleBoxFlat_3mr8l")
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorials/JobFinishTutorial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="Tutorials/JobFinishTutorial/MarginContainer"]
+custom_minimum_size = Vector2(159.805, 0)
+layout_mode = 2
+text = "Aguanta hasta las 21:00 para poder volver a la cama"
+label_settings = SubResource("LabelSettings_l1lyf")
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [editable path="CounterTop"]
 [editable path="CounterTop/CoffeeMachine"]

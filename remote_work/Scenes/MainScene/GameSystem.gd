@@ -56,6 +56,7 @@ func reset_day():
 	await UI.fade_transition("fade_out", 0)
 	get_tree().paused = false
 	game_started = true
+	job_on = true
 	
 func reset_game():
 	time_controller.reset_time()
@@ -108,10 +109,14 @@ func _on_ticktock_event(value: bool):
 func sleep():
 	player.hide()
 	reset_day()
-
+	
+func start_game():
+	reset_day()
+	NotificationManager._add_notification_to_queue(random.randi_range(task_min_range, task_max_range))
+	
 func job_ended():
 	job_on = false
-	
+
 func toggle_computer_mode():
 	computer_on = !computer_on
 	UI.computer_toggle(computer_on)

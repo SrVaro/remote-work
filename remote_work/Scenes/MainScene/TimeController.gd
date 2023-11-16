@@ -43,8 +43,8 @@ func _on_tick(ticks: int):
 		night_mode = false
 		get_tree().call_group("Lights","toggle_lights")
 		
-	if (hours >= 2 && hours <= 3) && night_mode:
-		GameSystem.job_ended()
+	#if (hours >= 2 && hours <= 3) && night_mode:
+	#	GameSystem.job_ended()
 		
 	if (hours >= 2 && hours <= 3) && night_mode:
 		GameSystem.sleep()
